@@ -2,8 +2,6 @@
 
 @section('title', $title)
 
-{{--@dd($view_data)--}}
-
 @section('content-main')
     <div class="container">
         <div class="row justify-content-center">
@@ -13,7 +11,7 @@
 
                     <div class="card-body">
                         <table class="table table-bordered table-secondary" style="width:100%">
-                            @foreach($view_data['main_categories'] as $product)
+                            @foreach($main_categories as $product)
                                 <tr>
                                     <td>{{ $product->id }}</td>
                                     <td>{{ $product->title }}</td>

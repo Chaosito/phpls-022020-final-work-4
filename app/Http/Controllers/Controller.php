@@ -16,6 +16,5 @@ class Controller extends BaseController
 
     public function __construct()
     {
-        $this->globalViewData['main_categories'] = ProductCategories::query()->limit(5)->get(['id', 'title']);
     }
 }

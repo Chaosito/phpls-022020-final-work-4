@@ -52,12 +52,12 @@
     </header>
     <div class="middle">
         <div class="sidebar">
-            @if(count($view_data['main_categories']))
+            @if(count($main_categories))
             <div class="sidebar-item">
                 <div class="sidebar-item__title">Категории</div>
                 <div class="sidebar-item__content">
                     <ul class="sidebar-category">
-                        @foreach($view_data['main_categories'] as $category)
+                        @foreach($main_categories as $category)
                             <li class="sidebar-category__item">
                                 <a href="{{Route('products.category', ['id' => $category->id])}}" class="sidebar-category__item__link">
                                     {{ $category->title }}
