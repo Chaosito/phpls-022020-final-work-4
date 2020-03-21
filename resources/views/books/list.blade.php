@@ -25,7 +25,4 @@
     </div>
 @endsection
 
-@section('content-bottom')
-    asdsda
-    asdasd
-@endsection
+@section('content-bottom','')
