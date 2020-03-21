@@ -52,18 +52,27 @@
     </header>
     <div class="middle">
         <div class="sidebar">
+            @if(count($view_data['main_categories']))
             <div class="sidebar-item">
                 <div class="sidebar-item__title">Категории</div>
                 <div class="sidebar-item__content">
                     <ul class="sidebar-category">
-                        <li class="sidebar-category__item"><a href="#" class="sidebar-category__item__link">Action</a></li>
-                        <li class="sidebar-category__item"><a href="#" class="sidebar-category__item__link">RPG</a></li>
-                        <li class="sidebar-category__item"><a href="#" class="sidebar-category__item__link">Квесты</a></li>
-                        <li class="sidebar-category__item"><a href="#" class="sidebar-category__item__link">Онлайн-игры</a></li>
-                        <li class="sidebar-category__item"><a href="#" class="sidebar-category__item__link">Стратегии</a></li>
+                        @foreach($view_data['main_categories'] as $category)
+                            <li class="sidebar-category__item">
+                                <a href="{{Route('products.category', ['id' => $category->id])}}" class="sidebar-category__item__link">
+                                    {{ $category->title }}
+                                </a>
+                            </li>
+                        @endforeach
+                        <li class="sidebar-category__item">
+                            <a href="{{Route('products.category.all')}}" class="sidebar-category__item__link">
+                                Все категории
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
+            @endif
             <div class="sidebar-item">
                 <div class="sidebar-item__title">Последние новости</div>
                 <div class="sidebar-item__content">
