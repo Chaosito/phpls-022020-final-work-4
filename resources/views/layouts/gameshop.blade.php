@@ -22,7 +22,7 @@
             </ul>
         </nav>
         <div class="header-contact">
-            <div class="header-contact__phone"><a href="#" class="header-contact__phone-link">Телефон: 33-333-33</a></div>
+            <div class="header-contact__phone"><a href="#" class="header-contact__phone-link">Телефон: {{$phone_to}}</a></div>
         </div>
         <div class="header-container">
             <div class="payment-container">
