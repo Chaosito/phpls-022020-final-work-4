@@ -8,7 +8,7 @@ class ProductCategoryController extends Controller
 {
     public function index()
     {
-        return view('products.product', ['title' => 'my super title', 'view_data' => $this->globalViewData]);
+        return view('products.product', ['title' => 'my super title']);
     }
 
     public function ListByCategory($id)
