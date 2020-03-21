@@ -18,9 +18,10 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+App::setLocale('ru');
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/books', 'BookController@index')->name('book');
+Route::get('/books', 'BookController@index')->name('books');
 
 //Route::get('/test', function(){
 //    return 'blabla';

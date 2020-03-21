@@ -10,8 +10,9 @@ class BookController extends Controller
     //
     public function index()
     {
+
         $books = Book::all();
 //        var_dump($books);
-        return view('books.list', ['books' => $books]);
+        return view('books.list', ['books' => $books, 'title' => 'my super title']);
     }
 }

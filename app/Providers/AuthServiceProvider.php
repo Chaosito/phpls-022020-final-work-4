@@ -25,6 +25,10 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+//        Gate::before()
+//        Gate::define('asd', function($user, $photo){
+//            return $user->id === $photo->user_id;
+//        });
         //
     }
 }

@@ -1,6 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.gameshop')
 
-@section('content')
+@section('title', $title)
+
+@section('content-main')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -8,7 +10,7 @@
                     <div class="card-header">Dashboard</div>
 
                     <div class="card-body">
-                        <table class="table-bordered" style="width:100%">
+                        <table class="table table-bordered table-secondary" style="width:100%">
                             @foreach($books as $book)
                                 <tr>
                                     <td>{{ $book->id }}</td>
@@ -21,4 +23,9 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('content-bottom')
+    asdsda
+    asdasd
 @endsection

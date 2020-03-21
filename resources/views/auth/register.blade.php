@@ -1,6 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.gameshop')
 
-@section('content')
+@section('title', __('auth.Register'))
+@section('content-top', '')
+
+@section('content-main')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -58,6 +62,14 @@
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">IsAdmin?</label>
+
+                            <div class="col-md-6">
+                                <input id="is-admin" type="checkbox" class="form-control" name="is_admin" value="1">
                             </div>
                         </div>
 

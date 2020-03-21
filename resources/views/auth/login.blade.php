@@ -1,6 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.gameshop')
 
-@section('content')
+@section('title', __('auth.Login'))
+@section('content-top', '')
+
+@section('content-main')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
