@@ -23,17 +23,17 @@ Route::get('/home', 'HomeController@index')->name('home');
 // hz
 Route::get('/products', 'ProductCategoryController@index')->name('products');
 
-// in progress
+// Просмотр товаров по определенной категории
+// Complete!
 Route::get('/products/category/{id}', 'ProductCategoryController@index')->name('products.category');
 
 // hz
-Route::get('/products/category/all', 'ProductController@ListByCategory')->name('products.category.all');
+Route::get('/category/list', 'ProductController@ListByCategory')->name('products.category.all');
 
+// О нас, о магазине
+// Complete! (static-page)
 Route::get('/about', 'HomeController@about')->name('about');
 
-
+// Список новостей
+// Complete! (News list)
 Route::get('/news', 'NewsController@List')->name('news');
-
-//Route::get('/test', function(){
-//    return 'blabla';
-//});
