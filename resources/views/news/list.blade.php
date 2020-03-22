@@ -12,7 +12,7 @@
                     <div class="news-list__item__content__news-title">{{ $news_item->title }}</div>
                     <div class="news-list__item__content__news-date">{{ $news_item->updated_at->format('d.m.Y') }}</div>
                     <div class="news-list__item__content__news-content">
-                        {{ Str::limit($news_item->description, 300, $end = '...') }}
+                        {!! Str::limit($news_item->description, 300, $end = '...') !!}
                     </div>
                 </div>
                 <div class="news-list__item__content__news-btn-wrap"><a href="{{ Route('news.item', ['id' => $news_item->id]) }}" class="btn btn-brown">Подробнее</a></div>

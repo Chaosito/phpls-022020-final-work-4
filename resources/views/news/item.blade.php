@@ -10,7 +10,7 @@
                 {{ $news_item->title }}
             </h3><img src="{{ asset($news_item->image_path) }}" alt="Image" class="alignleft img-news">
             <p>
-                {{ $news_item->description }}
+                {!! $news_item->description !!}
             </p>
         </div>
         <!-- /Main content block -->
