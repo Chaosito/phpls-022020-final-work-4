@@ -14,7 +14,7 @@
     <script src="{{ asset('js/arcticmodal/jquery.arcticmodal-0.3.min.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('js/arcticmodal/jquery.arcticmodal-0.3.css') }}">
     <!-- arcticModal theme -->
-    <link rel="stylesheet" href="{{ asset('js/arcticmodal/themes/simple.css') }}">
+        <link rel="stylesheet" href="{{ asset('js/arcticmodal/themes/simple.css') }}">
 </head>
 <body>
 <div class="main-wrapper">

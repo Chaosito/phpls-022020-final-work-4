@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Orders;
+use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,6 +20,13 @@ class OrdersController extends Controller
 
     public function buyWindow($id)
     {
-        return view('orders.buy-window', ['id' => $id]);
+
+        $userName = (Auth::User() ? Auth::User()->name : '');
+        $userMail = (Auth::User() ? Auth::User()->email : '');
+        // product name, description, price, count
+
+        $product = Product::query()->where('id', '=', $id)->first();
+
+        return view('orders.buy-window', ['id' => $id, 'product' => $product, 'user_name' => $userName, 'user_mail' => $userMail]);
     }
 }

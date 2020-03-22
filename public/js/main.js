@@ -3,6 +3,7 @@ $(document).ready(function(){
         e.preventDefault();
         let productId = $(this).data('product-id');
         $.arcticmodal({
+            closeOnOverlayClick: false,
             type: 'ajax',
             url: '/buy-window/' + productId,
         });
