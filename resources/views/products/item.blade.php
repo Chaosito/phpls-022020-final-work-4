@@ -5,7 +5,7 @@
 @section('content-main')
     <div class="content-main__container">
         <div class="product-container">
-            <div class="product-container__image-wrap"><img src="{{ asset('img/cover/game-1.jpg') }}" class="image-wrap__image-product"></div>
+            <div class="product-container__image-wrap"><img src="{{ asset($item->photo_path) }}" class="image-wrap__image-product"></div>
             <div class="product-container__content-text">
                 <div class="product-container__content-text__title">{{ $item->title }}</div>
                 <div class="product-container__content-text__price">
