@@ -28,3 +28,18 @@ copy .env.example to .env and fill
 php artisan key is missing (click button on page)
 
 
+##### Очистить базу (Если вдруг ранее были кривые миграции)
+`
+php artisan db:wipe
+`
+
+##### Запустить миграции (Создать БД)
+`
+php artisan migrate
+`
+
+##### Заполнить БД тестовыми данными
+`
+php artisan db:seed
+`
+
