@@ -49,8 +49,11 @@
                     <a href="{{ route('register') }}" class="authorization-block__link">{{ __('auth.Register') }}</a><a href="{{ route('login') }}" class="authorization-block__link">{{ __('auth.Login') }}</a>
                 </div>
             @else
+                @php
+                  $adminStyle = (Auth::user()->is_admin == 1 ? 'color:red;' : '');
+                @endphp
                 <div class="authorization-block">
-                    <a href="{{ route('home') }}" class="authorization-block__link">{{ Auth::user()->name }}</a><a href="{{ route('logout') }}" class="authorization-block__link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('auth.Logout') }}</a>
+                    <a href="{{ route('home') }}" class="authorization-block__link" style="{{$adminStyle}}">{{ Auth::user()->name }}</a><a href="{{ route('logout') }}" class="authorization-block__link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('auth.Logout') }}</a>
                 </div>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf
