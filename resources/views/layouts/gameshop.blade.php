@@ -19,10 +19,10 @@
         </div>
         <nav class="main-navigation">
             <ul class="nav-list">
-                <li class="nav-list__item"><a href="#" class="nav-list__item__link">Главная</a></li>
+                <li class="nav-list__item"><a href="{{Route('index')}}" class="nav-list__item__link">Главная</a></li>
                 <li class="nav-list__item"><a href="#" class="nav-list__item__link">Мои заказы</a></li>
                 <li class="nav-list__item"><a href="#" class="nav-list__item__link">Новости</a></li>
-                <li class="nav-list__item"><a href="#" class="nav-list__item__link">О компании</a></li>
+                <li class="nav-list__item"><a href="#about-block" class="nav-list__item__link">О компании</a></li>
             </ul>
         </nav>
         <div class="header-contact">
@@ -84,25 +84,25 @@
                 </div>
             </div>
             @endif
+            @if($last_news)
             <div class="sidebar-item">
                 <div class="sidebar-item__title">Последние новости</div>
                 <div class="sidebar-item__content">
                     <div class="sidebar-news">
+                        @foreach($last_news AS $new)
                         <div class="sidebar-news__item">
-                            <div class="sidebar-news__item__preview-news"><img src="{{ asset('img/cover/game-2.jpg') }}" alt="image-new" class="sidebar-new__item__preview-new__image"></div>
-                            <div class="sidebar-news__item__title-news"><a href="#" class="sidebar-news__item__title-news__link">О новых играх в режиме VR</a></div>
+                            <div class="sidebar-news__item__preview-news">
+                                <img src="{{ asset($new->image_path) }}" alt="image-new" class="sidebar-new__item__preview-new__image">
+                            </div>
+                            <div class="sidebar-news__item__title-news">
+                                <a href="#" class="sidebar-news__item__title-news__link">{{ $new->title }}</a>
+                            </div>
                         </div>
-                        <div class="sidebar-news__item">
-                            <div class="sidebar-news__item__preview-news"><img src="{{ asset('img/cover/game-1.jpg') }}" alt="image-new" class="sidebar-new__item__preview-new__image"></div>
-                            <div class="sidebar-news__item__title-news"><a href="#" class="sidebar-news__item__title-news__link">О новых играх в режиме VR</a></div>
-                        </div>
-                        <div class="sidebar-news__item">
-                            <div class="sidebar-news__item__preview-news"><img src="{{ asset('img/cover/game-4.jpg') }}" alt="image-new" class="sidebar-new__item__preview-new__image"></div>
-                            <div class="sidebar-news__item__title-news"><a href="#" class="sidebar-news__item__title-news__link">О новых играх в режиме VR</a></div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
+            @endif
         </div>
         <div class="main-content">
             @section('content-top')
@@ -167,16 +167,22 @@
                 <div class="random-product-container__head">Случайный товар</div>
                 <div class="random-product-container__content">
                     <div class="item-product">
-                        <div class="item-product__title-product"><a href="#" class="item-product__title-product__link">The Witcher 3: Wild Hunt</a></div>
-                        <div class="item-product__thumbnail"><a href="#" class="item-product__thumbnail__link"><img src="{{ asset('img/cover/game-1.jpg') }}" alt="Preview-image" class="item-product__thumbnail__link__img"></a></div>
+                        <div class="item-product__title-product">
+                            <a href="#" class="item-product__title-product__link">{{ $random_footer_item->title }}</a>
+                        </div>
+                        <div class="item-product__thumbnail">
+                            <a href="#" class="item-product__thumbnail__link">
+                                <img src="{{ asset($random_footer_item->photo_path) }}" alt="Preview-image" class="item-product__thumbnail__link__img">
+                            </a>
+                        </div>
                         <div class="item-product__description">
-                            <div class="item-product__description__products-price"><span class="products-price">400 руб</span></div>
+                            <div class="item-product__description__products-price"><span class="products-price">{{ $random_footer_item->price }} руб</span></div>
                             <div class="item-product__description__btn-block"><a href="#" class="btn btn-blue">Купить</a></div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="footer__footer-content__main-content">
+            <div class="footer__footer-content__main-content" id="about-block">
                 <p>
                     Интернет-магазин компьютерных игр ГЕЙМСМАРКЕТ - это
                     онлайн-магазин игр для геймеров, существующий на рынке уже 5 лет.
