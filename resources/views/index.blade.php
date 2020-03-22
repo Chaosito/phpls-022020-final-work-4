@@ -15,6 +15,7 @@
             @endforeach
         </div>
     </div>
+    {{$last_products->links()}}
     <div class="content-footer__container">
         <ul class="page-nav">
             <li class="page-nav__item"><a href="#" class="page-nav__item__link"><i class="fa fa-angle-double-left"></i></a></li>
@@ -28,4 +29,4 @@
     </div>
 @endsection
 
-@section('content-bottom','')
+@section('content-bottom', '')
