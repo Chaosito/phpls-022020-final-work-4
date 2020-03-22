@@ -163,6 +163,7 @@
     </div>
     <footer class="footer">
         <div class="footer__footer-content">
+            @if(isset($random_footer_item))
             <div class="random-product-container">
                 <div class="random-product-container__head">Случайный товар</div>
                 <div class="random-product-container__content">
@@ -182,6 +183,7 @@
                     </div>
                 </div>
             </div>
+            @endif
             <div class="footer__footer-content__main-content" id="about-block">
                 <p>
                     Интернет-магазин компьютерных игр ГЕЙМСМАРКЕТ - это

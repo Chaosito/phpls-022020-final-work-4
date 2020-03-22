@@ -24,11 +24,14 @@ class Controller extends BaseController
         $lastNews = News::query()->orderBy('id', 'desc')->limit(3)->get(['id', 'title', 'image_path']);
 
         // Нам плевать на производительность ;)
-        $randomProduct = Product::all()->random();
+        $allProducts = Product::all();
+        if ($allProducts->isNotEmpty()) {
+            View::share('random_footer_item', $allProducts->random());
+        }
 
         View::share('main_categories', $categories);
         View::share('phone_to', $phoneTo->value);
         View::share('last_news', $lastNews);
-        View::share('random_footer_item', $randomProduct);
+//
     }
 }
