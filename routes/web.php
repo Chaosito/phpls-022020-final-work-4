@@ -31,6 +31,9 @@ Route::get('/products/category/all', 'ProductController@ListByCategory')->name('
 
 Route::get('/about', 'HomeController@about')->name('about');
 
+
+Route::get('/news', 'NewsController@List')->name('news');
+
 //Route::get('/test', function(){
 //    return 'blabla';
 //});
