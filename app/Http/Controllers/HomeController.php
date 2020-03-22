@@ -28,4 +28,9 @@ class HomeController extends Controller
         $lastProducts = Product::query()->orderBy('id', 'desc')->paginate(6);
         return view('index', ['title' => 'Последние товары', 'last_products' => $lastProducts]);
     }
+
+    public function about()
+    {
+        return view('about', ['title' => 'О магазине']);
+    }
 }

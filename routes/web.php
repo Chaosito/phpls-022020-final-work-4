@@ -29,6 +29,7 @@ Route::get('/products/category/{id}', 'ProductCategoryController@index')->name('
 // hz
 Route::get('/products/category/all', 'ProductController@ListByCategory')->name('products.category.all');
 
+Route::get('/about', 'HomeController@about')->name('about');
 
 //Route::get('/test', function(){
 //    return 'blabla';

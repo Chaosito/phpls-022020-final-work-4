@@ -22,7 +22,7 @@
                 <li class="nav-list__item"><a href="{{Route('index')}}" class="nav-list__item__link">Главная</a></li>
                 <li class="nav-list__item"><a href="#" class="nav-list__item__link">Мои заказы</a></li>
                 <li class="nav-list__item"><a href="#" class="nav-list__item__link">Новости</a></li>
-                <li class="nav-list__item"><a href="#about-block" class="nav-list__item__link">О компании</a></li>
+                <li class="nav-list__item"><a href="{{Route('about')}}" class="nav-list__item__link">О компании</a></li>
             </ul>
         </nav>
         <div class="header-contact">
