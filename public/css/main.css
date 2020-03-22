@@ -929,6 +929,12 @@ img {
       text-align: center; }
       .page-nav__item__link:hover, .page-nav__item__link:focus, .page-nav__item__link--active {
         color: #d28324; }
+      li.page-nav__item > span {
+          color:gray;
+      }
+      li.page-nav__item > span:hover {
+          color:gray;
+      }
 
 .alignnone {
   margin: 5px 20px 20px 0; }
