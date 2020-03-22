@@ -17,14 +17,16 @@ Route::get('/', 'HomeController@index')->name('index');
 
 Auth::routes();
 
-// Future: user-profile page
+// Future: user-profile page (Now go home)
 Route::get('/home', 'HomeController@index')->name('home');
 
-//
+// hz
 Route::get('/products', 'ProductCategoryController@index')->name('products');
 
-
+// in progress
 Route::get('/products/category/{id}', 'ProductCategoryController@index')->name('products.category');
+
+// hz
 Route::get('/products/category/all', 'ProductController@ListByCategory')->name('products.category.all');
 
 
