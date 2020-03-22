@@ -17,27 +17,23 @@ Route::get('/', 'HomeController@index')->name('index');
 
 Auth::routes();
 
-// Future: user-profile page (Now go home)
+// To-Do: Возможно в будущем сделать профиль юзера
 Route::get('/home', 'HomeController@index')->name('home');
 
-// hz
-Route::get('/products', 'ProductCategoryController@index')->name('products');
+// Конкретный продукт
+Route::get('/products/{id}', 'ProductController@item')->name('products.item');
 
 // Просмотр товаров по определенной категории
-// Complete!
 Route::get('/products/category/{id}', 'ProductCategoryController@index')->name('products.category');
 
-// hz
-Route::get('/category/list', 'ProductController@listByCategory')->name('products.category.all');
+// To-Do: Список всех категорий
+Route::get('/category/list', 'ProductCategoryController@listAll')->name('products.category.all');
 
-// О нас, о магазине
-// Complete! (static-page)
+// About
 Route::get('/about', 'HomeController@about')->name('about');
 
 // Список новостей
-// Complete! (News list)
 Route::get('/news', 'NewsController@list')->name('news');
 
 // Конкретная новость
-//
 Route::get('/news/{id}', 'NewsController@item')->name('news.item');

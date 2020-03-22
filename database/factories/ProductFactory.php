@@ -9,7 +9,7 @@ $factory->define(App\Product::class, function (Faker $faker) {
         'category_id' => mt_rand(1, 50),
         'price' => $faker->randomFloat(2, 200, 10000),
         'title' => $faker->jobTitle,
-        'description' => $faker->text,
+        'description' => str_repeat('<p>'.$faker->realText(250).'</p>', 4),
         'photo_path' => 'img/cover/game-'.mt_rand(1, 9).'.jpg'
     ];
 });

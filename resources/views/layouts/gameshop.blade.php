@@ -50,7 +50,7 @@
                 </div>
             @else
                 <div class="authorization-block">
-                    <a href="{{ route('register') }}" class="authorization-block__link">{{ Auth::user()->name }}</a><a href="{{ route('logout') }}" class="authorization-block__link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('auth.Logout') }}</a>
+                    <a href="{{ route('home') }}" class="authorization-block__link">{{ Auth::user()->name }}</a><a href="{{ route('logout') }}" class="authorization-block__link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('auth.Logout') }}</a>
                 </div>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf
