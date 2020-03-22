@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
  * Оформление заказа
  * Отправка на почту
  * Профиль?
+ * "Больше категорий"
  * Редактирование настроек, категорий, продуктов, новостей
  * Поиск
  * Формы регистрации и авторизации к нормальному виду
@@ -46,3 +47,6 @@ Route::get('/news/{id}', 'NewsController@item')->name('news.item');
 
 // Мои заказы
 Route::get('/myorders', 'OrdersController@myOrders')->name('orders.my');
+
+// Мои заказы
+Route::get('/buy-window/{id}', 'OrdersController@buyWindow')->name('orders.buy-window');

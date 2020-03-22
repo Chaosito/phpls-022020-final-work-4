@@ -8,6 +8,13 @@
     <link rel="stylesheet" href="{{ asset('css/libs.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('css/media.css') }}">
+
+    <script src="{{ asset('js/jquery-1.8.3.min.js') }}"></script>
+    <!-- arcticModal -->
+    <script src="{{ asset('js/arcticmodal/jquery.arcticmodal-0.3.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('js/arcticmodal/jquery.arcticmodal-0.3.css') }}">
+    <!-- arcticModal theme -->
+    <link rel="stylesheet" href="{{ asset('js/arcticmodal/themes/simple.css') }}">
 </head>
 <body>
 <div class="main-wrapper">
@@ -140,19 +147,30 @@
                     <div class="content-main__container">
                         <div class="products-columns">
                             <div class="products-columns__item">
-                                <div class="products-columns__item__title-product"><a href="#" class="products-columns__item__title-product__link">The Witcher 3: Wild Hunt</a></div>
-                                <div class="products-columns__item__thumbnail"><a href="#" class="products-columns__item__thumbnail__link"><img src="{{ asset('img/cover/game-1.jpg') }}" alt="Preview-image" class="products-columns__item__thumbnail__img"></a></div>
-                                <div class="products-columns__item__description"><span class="products-price">400 руб</span><a href="#" class="btn btn-blue">Купить</a></div>
+                                <div class="products-columns__item__title-product">
+                                    <a href="#" class="products-columns__item__title-product__link">
+                                        The Witcher 3: Wild Hunt
+                                    </a>
+                                </div>
+                                <div class="products-columns__item__thumbnail">
+                                    <a href="#" class="products-columns__item__thumbnail__link">
+                                        <img src="{{ asset('img/cover/game-1.jpg') }}" alt="Preview-image" class="products-columns__item__thumbnail__img">
+                                    </a>
+                                </div>
+                                <div class="products-columns__item__description">
+                                    <span class="products-price">400 руб</span>
+                                    <a href="#" class="btn btn-blue">Купить</a>
+                                </div>
                             </div>
                             <div class="products-columns__item">
                                 <div class="products-columns__item__title-product"><a href="#" class="products-columns__item__title-product__link">Overwatch</a></div>
                                 <div class="products-columns__item__thumbnail"><a href="#" class="products-columns__item__thumbnail__link"><img src="img/cover/game-2.jpg" alt="Preview-image" class="products-columns__item__thumbnail__img"></a></div>
-                                <div class="products-columns__item__description"><span class="products-price">400 руб</span><a href="#" class="btn btn-blue">Купить</a></div>
+                                <div class="products-columns__item__description"><span class="products-price">400 руб</span><a href="#" class="btn btn-blue btn-buy">Купить</a></div>
                             </div>
                             <div class="products-columns__item">
                                 <div class="products-columns__item__title-product"><a href="#" class="products-columns__item__title-product__link">Deus Ex: Mankind Divided</a></div>
                                 <div class="products-columns__item__thumbnail"><a href="#" class="products-columns__item__thumbnail__link"><img src="img/cover/game-3.jpg" alt="Preview-image" class="products-columns__item__thumbnail__img"></a></div>
-                                <div class="products-columns__item__description"><span class="products-price">400 руб</span><a href="#" class="btn btn-blue">Купить</a></div>
+                                <div class="products-columns__item__description"><span class="products-price">400 руб</span><a href="#" class="btn btn-blue btn-buy">Купить</a></div>
                             </div>
                         </div>
                     </div>
@@ -178,7 +196,7 @@
                         </div>
                         <div class="item-product__description">
                             <div class="item-product__description__products-price"><span class="products-price">{{ $random_footer_item->price }} руб</span></div>
-                            <div class="item-product__description__btn-block"><a href="#" class="btn btn-blue">Купить</a></div>
+                            <div class="item-product__description__btn-block"><a href="#buy" data-product-id="{{ $random_footer_item->id }}" class="btn btn-blue">Купить</a></div>
                         </div>
                     </div>
                 </div>
