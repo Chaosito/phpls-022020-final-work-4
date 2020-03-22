@@ -5,14 +5,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="css/libs.min.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/media.css">
+    <link rel="stylesheet" href="{{ asset('css/libs.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/media.css') }}">
 </head>
 <body>
 <div class="main-wrapper">
     <header class="main-header">
-        <div class="logotype-container"><a href="{{Route('index')}}" class="logotype-link"><img src="img/logo.png" alt="Логотип"></a></div>
+        <div class="logotype-container"><a href="{{Route('index')}}" class="logotype-link"><img src="{{ asset('img/logo.png') }}" alt="Логотип"></a></div>
         <nav class="main-navigation">
             <ul class="nav-list">
                 <li class="nav-list__item"><a href="#" class="nav-list__item__link">Главная</a></li>

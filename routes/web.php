@@ -24,7 +24,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/products', 'ProductCategoryController@index')->name('products');
 
 
-Route::get('/products/category/{id}', 'ProductController@ListByCategory')->name('products.category');
+Route::get('/products/category/{id}', 'ProductCategoryController@index')->name('products.category');
 Route::get('/products/category/all', 'ProductController@ListByCategory')->name('products.category.all');
 
 

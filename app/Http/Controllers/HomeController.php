@@ -25,12 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-//        $lastProducts = Product::query()->orderBy('id', 'desc')->limit(6)->get(['id', 'price', 'title', 'photo_path']);
-
         $lastProducts = Product::query()->orderBy('id', 'desc')->paginate(6);
-//        dd($sad);
-//        dd($productsIndex);
-
         return view('index', ['title' => 'Последние товары', 'last_products' => $lastProducts]);
     }
 }
