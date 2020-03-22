@@ -12,6 +12,7 @@ class ProductController extends Controller
 
         public function ListByCategory($id)
         {
+            dd($id);
         }
 
 }

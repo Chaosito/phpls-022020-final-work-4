@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,6 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('game', ['title' => 'my super title']);
+        $lastProducts = Product::query()->orderBy('id', 'desc')->limit(6)->get(['id', 'price', 'title', 'photo_path']);
+//        dd($productsIndex);
+
+        return view('index', ['title' => 'Последние товары', 'last_products' => $lastProducts]);
     }
 }

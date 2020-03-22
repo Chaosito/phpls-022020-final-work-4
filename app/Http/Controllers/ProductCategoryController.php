@@ -8,7 +8,7 @@ class ProductCategoryController extends Controller
 {
     public function index()
     {
-        return view('products.product', ['title' => 'my super title']);
+        return view('products.category', ['title' => 'my super title2']);
     }
 
     public function ListByCategory($id)

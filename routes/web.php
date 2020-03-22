@@ -17,10 +17,16 @@ Route::get('/', 'HomeController@index')->name('index');
 
 Auth::routes();
 
+// Future: user-profile page
 Route::get('/home', 'HomeController@index')->name('home');
+
+//
 Route::get('/products', 'ProductCategoryController@index')->name('products');
-Route::get('/products/category/{id}', 'ProductController@listbycategory')->name('products.category');
+
+
+Route::get('/products/category/{id}', 'ProductController@ListByCategory')->name('products.category');
 Route::get('/products/category/all', 'ProductController@ListByCategory')->name('products.category.all');
+
 
 //Route::get('/test', function(){
 //    return 'blabla';
