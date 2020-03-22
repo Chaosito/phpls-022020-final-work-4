@@ -125,8 +125,8 @@
                     </div>
                     <div class="content-head__search-block">
                         <div class="search-container">
-                            <form class="search-container__form">
-                                <input type="text" class="search-container__form__input">
+                            <form class="search-container__form" action="{{ Route('search') }}">
+                                <input type="text" name="q" class="search-container__form__input">
                                 <button class="search-container__form__btn">Поиск</button>
                             </form>
                         </div>

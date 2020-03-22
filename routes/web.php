@@ -49,3 +49,6 @@ Route::get('/myorders', 'OrdersController@myOrders')->name('orders.my');
 
 // Мои заказы
 Route::get('/buy-window/{id}', 'OrdersController@buyWindow')->name('orders.buy-window');
+
+// To-Do: Search
+Route::get('/search', 'HomeController@search')->name('search');

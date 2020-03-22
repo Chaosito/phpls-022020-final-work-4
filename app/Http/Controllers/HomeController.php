@@ -33,4 +33,10 @@ class HomeController extends Controller
     {
         return view('about', ['title' => 'О магазине']);
     }
+
+    public function search(Request $request)
+    {
+//        dd($request);
+        return view('about', ['title' => 'Поиск "'.$request->q.'"']);
+    }
 }
