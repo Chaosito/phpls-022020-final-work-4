@@ -17,6 +17,16 @@ class ProductCategoryController extends Controller
 
     public function listAll()
     {
-        return 'azaza';
+//        $categories = ProductCategories::query()->orderBy('title')->paginate(20);
+
+//        $this->model->leftJoin('Rooms', 'Properties.ID', '=', 'Rooms.Property')
+//            ->selectRaw('Properties.*, count(Rooms.RoomID) as RoomsCount')
+//            ->groupBy('Properties.ID')
+//            ->get();
+
+        $categories = ProductCategories::with('products')->orderBy('title')->paginate(20);
+//        dd($categories, $categories->products);
+
+        return view('products.categories', ['title' => 'Все категории', 'categories' => $categories]);
     }
 }
