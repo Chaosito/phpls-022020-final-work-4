@@ -13,4 +13,10 @@ class NewsController extends Controller
         $news = News::query()->orderBy('id', 'desc')->paginate(3);
         return view('news.list', ['title' => 'Новости', 'news' => $news]);
     }
+
+    public function item($id)
+    {
+        $newsItem = News::query()->where('id','=', $id)->first();
+        return view('news.item', ['title' => 'Новости', 'news_item' => $newsItem]);
+    }
 }

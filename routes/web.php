@@ -28,7 +28,7 @@ Route::get('/products', 'ProductCategoryController@index')->name('products');
 Route::get('/products/category/{id}', 'ProductCategoryController@index')->name('products.category');
 
 // hz
-Route::get('/category/list', 'ProductController@ListByCategory')->name('products.category.all');
+Route::get('/category/list', 'ProductController@listByCategory')->name('products.category.all');
 
 // О нас, о магазине
 // Complete! (static-page)
@@ -36,4 +36,8 @@ Route::get('/about', 'HomeController@about')->name('about');
 
 // Список новостей
 // Complete! (News list)
-Route::get('/news', 'NewsController@List')->name('news');
+Route::get('/news', 'NewsController@list')->name('news');
+
+// Конкретная новость
+//
+Route::get('/news/{id}', 'NewsController@item')->name('news.item');

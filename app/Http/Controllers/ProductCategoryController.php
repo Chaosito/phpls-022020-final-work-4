@@ -18,7 +18,7 @@ class ProductCategoryController extends Controller
         return view('products.by-category', ['title' => 'Игры в разделе '.$categoryTitle, 'last_products' => $lastProducts]);
     }
 
-    public function ListByCategory()
+    public function listByCategory()
     {
 
     }

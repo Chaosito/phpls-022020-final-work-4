@@ -8,7 +8,7 @@ $factory->define(App\News::class, function (Faker $faker) {
     return [
         'creator_id' => mt_rand(1, 50),
         'title' => $faker->realText(30),
-        'description' => $faker->realText(200),
+        'description' => $faker->realText(1000),
         'image_path' => 'img/cover/game-'.mt_rand(1, 9).'.jpg',
     ];
 });
