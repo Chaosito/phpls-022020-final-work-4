@@ -20,7 +20,7 @@
         <nav class="main-navigation">
             <ul class="nav-list">
                 <li class="nav-list__item"><a href="{{Route('index')}}" class="nav-list__item__link">Главная</a></li>
-                <li class="nav-list__item"><a href="#" class="nav-list__item__link">Мои заказы</a></li>
+                <li class="nav-list__item"><a href="{{Route('orders.my')}}" class="nav-list__item__link">Мои заказы</a></li>
                 <li class="nav-list__item"><a href="{{Route('news')}}" class="nav-list__item__link">Новости</a></li>
                 <li class="nav-list__item"><a href="{{Route('about')}}" class="nav-list__item__link">О компании</a></li>
             </ul>
@@ -59,9 +59,6 @@
                     @csrf
                 </form>
             @endguest
-
-
-
         </div>
     </header>
     <div class="middle">
@@ -123,7 +120,7 @@
                         <div class="search-container">
                             <form class="search-container__form">
                                 <input type="text" class="search-container__form__input">
-                                <button class="search-container__form__btn">search</button>
+                                <button class="search-container__form__btn">Поиск</button>
                             </form>
                         </div>
                     </div>

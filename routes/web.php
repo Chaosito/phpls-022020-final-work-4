@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 /*
  * To-Do:
  * Посмотрите наши товары (футер)
- * Мои заказы
+ * +++Мои заказы
  * Оформление заказа
  * Отправка на почту
  * Профиль?
@@ -43,3 +43,6 @@ Route::get('/news', 'NewsController@list')->name('news');
 
 // Конкретная новость
 Route::get('/news/{id}', 'NewsController@item')->name('news.item');
+
+// Мои заказы
+Route::get('/myorders', 'OrdersController@myOrders')->name('orders.my');

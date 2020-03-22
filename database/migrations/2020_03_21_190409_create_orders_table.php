@@ -18,6 +18,7 @@ class CreateOrdersTable extends Migration
             $table->integer('user_id')->index();
             $table->integer('product_id')->index();
             $table->integer('capacity');
+            $table->decimal('price', 8, 2, true);
             $table->string('user_mail');
             $table->string('user_name');
             $table->timestamps();
