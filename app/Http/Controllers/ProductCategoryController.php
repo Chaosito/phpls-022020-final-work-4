@@ -17,16 +17,19 @@ class ProductCategoryController extends Controller
 
     public function listAll()
     {
-//        $categories = ProductCategories::query()->orderBy('title')->paginate(20);
-
-//        $this->model->leftJoin('Rooms', 'Properties.ID', '=', 'Rooms.Property')
-//            ->selectRaw('Properties.*, count(Rooms.RoomID) as RoomsCount')
-//            ->groupBy('Properties.ID')
-//            ->get();
-
         $categories = ProductCategories::with('products')->orderBy('title')->paginate(20);
-//        dd($categories, $categories->products);
-
         return view('products.categories', ['title' => 'Все категории', 'categories' => $categories]);
+    }
+
+    public function edit($id)
+    {
+        $category = ProductCategories::query()->where('id', $id)->first();
+        return view('categories.edit', ['title' => 'Редактирование категории', 'category' => $category]);
+    }
+
+    public function save($id, Request $request)
+    {
+//        $category = ProductCategories::query()->where('id', $id)->first();
+        return redirect()->route('products.category.edit', ['id' => $id]);
     }
 }

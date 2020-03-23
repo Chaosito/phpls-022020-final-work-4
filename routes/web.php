@@ -30,10 +30,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/products/{id}', 'ProductController@item')->name('products.item');
 
 // Просмотр товаров по определенной категории
-Route::get('/products/category/{id}', 'ProductCategoryController@index')->name('products.category');
+Route::get('/category/{id}', 'ProductCategoryController@index')->name('products.category');
+
+// Просмотр товаров по определенной категории
+Route::get('/category/{id}/edit', 'ProductCategoryController@edit')->name('products.category.edit');
+Route::post('/category/{id}/edit', 'ProductCategoryController@save')->name('products.category.edit.save');
 
 // To-Do: Список всех категорий
-Route::get('/category/list', 'ProductCategoryController@listAll')->name('products.category.all');
+Route::get('products/category/list', 'ProductCategoryController@listAll')->name('products.category.all');
 
 // About
 Route::get('/about', 'HomeController@about')->name('about');

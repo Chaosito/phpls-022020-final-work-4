@@ -17,7 +17,7 @@
                     @if (Auth::User() && Auth::User()->is_admin == 1)
                         <div class="cart-product__item__product-price">
                             <span class="product-price__value">
-                                <a href="#">Edit</a>
+                                <a href="{{ Route('products.category.edit', ['id' => $category->id]) }}">Edit</a>
                                 <a href="#">Delete</a>
                             </span>
                         </div>
