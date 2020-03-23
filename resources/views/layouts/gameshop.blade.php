@@ -27,7 +27,9 @@
         <nav class="main-navigation">
             <ul class="nav-list">
                 <li class="nav-list__item"><a href="{{Route('index')}}" class="nav-list__item__link">Главная</a></li>
+                @auth
                 <li class="nav-list__item"><a href="{{Route('orders.my')}}" class="nav-list__item__link">Мои заказы</a></li>
+                @endauth
                 <li class="nav-list__item"><a href="{{Route('news')}}" class="nav-list__item__link">Новости</a></li>
                 <li class="nav-list__item"><a href="{{Route('about')}}" class="nav-list__item__link">О компании</a></li>
             </ul>

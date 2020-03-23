@@ -47,8 +47,11 @@ Route::get('/news/{id}', 'NewsController@item')->name('news.item');
 // Мои заказы
 Route::get('/myorders', 'OrdersController@myOrders')->name('orders.my');
 
-// Мои заказы
+// Popup-window order
 Route::get('/buy-window/{id}', 'OrdersController@buyWindow')->name('orders.buy-window');
+
+// Try order
+Route::post('/product/buy/{id}', 'OrdersController@buy')->name('product.buy');
 
 // To-Do: Search
 Route::get('/search', 'HomeController@search')->name('search');

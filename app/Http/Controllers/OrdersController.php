@@ -29,4 +29,25 @@ class OrdersController extends Controller
 
         return view('orders.buy-window', ['id' => $id, 'product' => $product, 'user_name' => $userName, 'user_mail' => $userMail]);
     }
+
+    public function buy(Request $request)
+    {
+        $order = new Orders();
+
+        if (Auth::User()) {
+            $order->user_id = Auth::User()->id;
+        }
+
+        $order->product_id = $request->product_id;
+        $order->capacity = $request->capacity;
+
+        $price = Product::query()->where('id', '=', $request->product_id)->select('price')->first()->price;
+
+        $order->price = $price;
+        $order->user_mail = $request->user_mail;
+        $order->user_name = $request->user_name;
+
+        $result = $order->save();
+        return response()->json(['result' => (int)$result]);
+    }
 }
