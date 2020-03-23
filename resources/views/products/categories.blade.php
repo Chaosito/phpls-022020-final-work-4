@@ -18,7 +18,7 @@
                         <div class="cart-product__item__product-price">
                             <span class="product-price__value">
                                 <a href="{{ Route('products.category.edit', ['id' => $category->id]) }}">Edit</a>
-                                <a href="#">Delete</a>
+                                <a href="{{ Route('products.category.delete', ['id' => $category->id]) }}">Delete</a>
                             </span>
                         </div>
                     @endif

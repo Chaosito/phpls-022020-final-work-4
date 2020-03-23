@@ -29,7 +29,18 @@ class ProductCategoryController extends Controller
 
     public function save($id, Request $request)
     {
-//        $category = ProductCategories::query()->where('id', $id)->first();
+        ProductCategories::query()->where('id', $id)->update(['title' => $request->title, 'description' => $request->description]);
         return redirect()->route('products.category.edit', ['id' => $id]);
+    }
+
+    public function delete($id)
+    {
+        $productsInCategory = (int)Product::query()->where('category_id', $id)->count();
+        if ($productsInCategory > 0) {
+            return "Категори содержит продукты. Нельзя удалить не пустую категорию!";
+        } else {
+            ProductCategories::query()->find($id)->delete();
+            return redirect()->route('products.category.all');
+        }
     }
 }

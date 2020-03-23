@@ -16,7 +16,9 @@ use Illuminate\Support\Facades\Route;
  *  Редактирование настроек, категорий, продуктов, новостей
  *  Поиск
  *  Формы регистрации и авторизации к нормальному виду
- * Профиль?
+ *  Профиль?
+ *  Форму редактирования категорий
+ *  Ошибка удаления категории
  */
 
 Route::get('/', 'HomeController@index')->name('index');
@@ -32,9 +34,12 @@ Route::get('/products/{id}', 'ProductController@item')->name('products.item');
 // Просмотр товаров по определенной категории
 Route::get('/category/{id}', 'ProductCategoryController@index')->name('products.category');
 
-// Просмотр товаров по определенной категории
+// Редактирование категории
 Route::get('/category/{id}/edit', 'ProductCategoryController@edit')->name('products.category.edit');
 Route::post('/category/{id}/edit', 'ProductCategoryController@save')->name('products.category.edit.save');
+
+// Удаление категории
+Route::get('/category/{id}/delete', 'ProductCategoryController@delete')->name('products.category.delete');
 
 // To-Do: Список всех категорий
 Route::get('products/category/list', 'ProductCategoryController@listAll')->name('products.category.all');
