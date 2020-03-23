@@ -72,6 +72,20 @@
     </header>
     <div class="middle">
         <div class="sidebar">
+            @if(Auth::user() && Auth::user()->is_admin)
+            <div class="sidebar-item">
+                <div class="sidebar-item__title">Admin</div>
+                <div class="sidebar-item__content">
+                    <ul class="sidebar-category">
+                        <li class="sidebar-category__item">
+                            <a href="{{Route('site.settings')}}" class="sidebar-category__item__link">
+                                Настройки
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            @endif
             @if(count($main_categories))
             <div class="sidebar-item">
                 <div class="sidebar-item__title">Категории</div>

@@ -18,12 +18,20 @@ class CreateSettingsTable extends Migration
             $table->id();
             $table->string('key', 50)->unique();
             $table->string('value', 255);
+            $table->string('human_description', 255);
             $table->timestamps();
         });
 
         DB::table('settings')->insert([
-            ['key' => 'phone_number', 'value' => '31-337'],
-            ['key' => 'orders_mail_to', 'value' => 'admin@abuse.net']
+            [
+                'key' => 'phone_number',
+                'value' => '31-337',
+                'human_description' => 'Телефон на главной странице'
+            ], [
+                'key' => 'orders_mail_to',
+                'value' => 'admin@abuse.net',
+                'human_description' => 'Отправлять заказы на почту'
+            ]
         ]);
     }
 

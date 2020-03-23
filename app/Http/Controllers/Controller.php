@@ -32,6 +32,7 @@ class Controller extends BaseController
         View::share('main_categories', $categories);
         View::share('phone_to', $phoneTo->value);
         View::share('last_news', $lastNews);
+        View::share('title', 'Unnamed page');
 //
     }
 }

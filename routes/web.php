@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
  * To-Do:
  *  Посмотрите наши товары (футер)
  *  +++Мои заказы
- *  Оформление заказа (JS-Order)
+ *  +++Оформление заказа (JS-Order)
  *  Отправка на почту
  *  +++"Больше категорий"
  *  Редактирование настроек, категорий, продуктов, новостей
@@ -55,3 +55,7 @@ Route::post('/product/buy/{id}', 'OrdersController@buy')->name('product.buy');
 
 // To-Do: Search
 Route::get('/search', 'HomeController@search')->name('search');
+
+// To-Do: Settings (to-do admins only via middleware?)
+Route::get('/admin/settings', 'SettingsController@index')->name('site.settings')->middleware('auth');
+Route::post('/admin/settings', 'SettingsController@save')->name('site.settings.save')->middleware('auth');

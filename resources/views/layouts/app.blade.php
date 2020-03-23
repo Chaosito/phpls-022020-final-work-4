@@ -27,7 +27,7 @@
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <a class="nav-item" href="{{ url('/') }}">
-                    <a class="nav-link" href="{{ route('products') }}">Products</a>
+                    <a class="nav-link" href="{{ route('index') }}">Products</a>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
