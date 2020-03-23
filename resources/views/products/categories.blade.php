@@ -4,6 +4,15 @@
 
 @section('content-main')
     <div class="content-main__container">
+        <div class="content-footer__container">
+            <nav>
+                <ul class="page-nav">
+                    <li class="page-nav__item">
+                        <a href="{{ Route('products.category.add') }}" class="page-nav__item__link">Add</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
         <div class="cart-product-list">
             @foreach($categories as $category)
                 <div class="cart-product-list__item">

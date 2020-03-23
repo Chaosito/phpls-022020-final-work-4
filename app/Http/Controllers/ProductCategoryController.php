@@ -43,4 +43,8 @@ class ProductCategoryController extends Controller
             return redirect()->route('products.category.all');
         }
     }
+
+    public function add()
+    {
+    }
 }

@@ -35,8 +35,11 @@ Route::get('/products/{id}', 'ProductController@item')->name('products.item');
 Route::get('/category/{id}', 'ProductCategoryController@index')->name('products.category');
 
 // Редактирование категории
-Route::get('/category/{id}/edit', 'ProductCategoryController@edit')->name('products.category.edit');
-Route::post('/category/{id}/edit', 'ProductCategoryController@save')->name('products.category.edit.save');
+Route::get('/category/{id}/edit', 'ProductCategoryController@edit')->name('products.category.edit')->middleware('auth');
+Route::post('/category/{id}/edit', 'ProductCategoryController@save')->name('products.category.edit.save')->middleware('auth');
+
+// Создание категории
+Route::get('/category/add', 'ProductCategoryController@add')->name('products.category.add')->middleware('auth');
 
 // Удаление категории
 Route::get('/category/{id}/delete', 'ProductCategoryController@delete')->name('products.category.delete');
