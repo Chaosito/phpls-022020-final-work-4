@@ -4,6 +4,20 @@
 
 @section('content-main')
     <div class="content-main__container">
+        @if(Auth::user() && Auth::user()->is_admin)
+            <div class="content-footer__container">
+                <nav>
+                    <ul class="page-nav">
+                        <li class="page-nav__item">
+                            <a href="{{ Route('product.edit', ['id' => $item->id]) }}" class="page-nav__item__link">Редактировать</a>
+                        </li>
+                        <li class="page-nav__item">
+                            <a href="{{ Route('product.delete', ['id' => $item->id]) }}" class="page-nav__item__link">Удалить</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        @endif
         <div class="product-container">
             <div class="product-container__image-wrap"><img src="{{ asset($item->photo_path) }}" class="image-wrap__image-product"></div>
             <div class="product-container__content-text">

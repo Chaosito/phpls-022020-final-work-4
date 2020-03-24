@@ -12,7 +12,7 @@ class ProductCategoryController extends Controller
     {
         $categoryTitle = ProductCategories::query()->select('title')->where('id', $id)->first()->title;
         $lastProducts = Product::query()->where('category_id','=',$id)->orderBy('id', 'desc')->paginate(6);
-        return view('products.by-category', ['title' => 'Игры в разделе '.$categoryTitle, 'last_products' => $lastProducts]);
+        return view('products.by-category', ['title' => 'Игры в разделе '.$categoryTitle, 'last_products' => $lastProducts, 'category_id' => $id]);
     }
 
     public function listAll()
@@ -43,7 +43,8 @@ class ProductCategoryController extends Controller
     {
         $productsInCategory = (int)Product::query()->where('category_id', $id)->count();
         if ($productsInCategory > 0) {
-            return "Категори содержит продукты. Нельзя удалить не пустую категорию!";
+//            return "Категория содержит продукты. Нельзя удалить не пустую категорию!";
+            return view('message', ['title' => 'Error', 'message' => 'Категория содержит продукты. Нельзя удалить не пустую категорию!']);
         } else {
             ProductCategories::query()->find($id)->delete();
             return redirect()->route('category.all');

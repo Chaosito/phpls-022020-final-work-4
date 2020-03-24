@@ -11,6 +11,7 @@ class OrdersController extends Controller
 {
     public function myOrders()
     {
+
         $myOrders = Orders::with('product')
             ->where('user_id', '=', Auth::User()->id)
             ->orderByDesc('id')

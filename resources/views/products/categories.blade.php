@@ -4,15 +4,17 @@
 
 @section('content-main')
     <div class="content-main__container">
+        @if(Auth::user() && Auth::user()->is_admin)
         <div class="content-footer__container">
             <nav>
                 <ul class="page-nav">
                     <li class="page-nav__item">
-                        <a href="{{ Route('category.add') }}" class="page-nav__item__link">Add</a>
+                        <a href="{{ Route('category.add') }}" class="page-nav__item__link">Добавить категорию</a>
                     </li>
                 </ul>
             </nav>
         </div>
+        @endif
         <div class="cart-product-list">
             @foreach($categories as $category)
                 <div class="cart-product-list__item">

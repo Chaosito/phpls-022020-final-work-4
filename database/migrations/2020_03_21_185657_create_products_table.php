@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->text('description');
             $table->string('photo_path', 255);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

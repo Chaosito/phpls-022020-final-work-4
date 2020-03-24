@@ -31,23 +31,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 
-// Создание категории
-
-Route::group(['prefix' => 'category'], function(){
-
-
-
-// Редактирование категории
-
-// Удаление категории
-
-// To-Do: Список всех категорий
-
-// Просмотр товаров по определенной категории
-//    Route::get('{id}', 'ProductCategoryController@index')->where('id', '[0-9]+')->name('products.category');
-
-});
-
 Route::group(['prefix' => 'category'], function(){
     Route::post('add', 'ProductCategoryController@append')->middleware('auth');
     Route::post('{id}/edit', 'ProductCategoryController@save')->middleware('auth');
@@ -85,6 +68,15 @@ Route::get('/buy-window/{id}', 'OrdersController@buyWindow')->name('orders.buy-w
 
 // Try order
 Route::post('/product/buy/{id}', 'OrdersController@buy')->name('product.buy');
+
+Route::get('/product/add', 'ProductController@add')->name('product.add')->middleware('auth');
+Route::post('/product/add', 'ProductController@append')->middleware('auth');
+
+Route::get('/product/{id}/edit', 'ProductController@edit')->name('product.edit')->middleware('auth');
+Route::post('/product/{id}/edit', 'ProductController@save')->middleware('auth');
+
+
+Route::get('/product/{id}/delete', 'ProductController@delete')->name('product.delete')->middleware('auth');
 
 // To-Do: Search
 Route::get('/search', 'HomeController@search')->name('search');
