@@ -1142,7 +1142,7 @@ a img.aligncenter {
 .table-custom-form tr td select {
     width:454px;
 }
-.table-custom-form tr td input[type=text] {
+.table-custom-form tr td input[type=text], .table-custom-form tr td input[type=email], .table-custom-form tr td input[type=password] {
     width:450px;
 }
 .table-custom-form tr td textarea {

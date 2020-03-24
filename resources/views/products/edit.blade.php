@@ -72,7 +72,6 @@
             </div>
         </form>
     </div>
-
     <div class="content-footer__container"></div>
 @endsection
 

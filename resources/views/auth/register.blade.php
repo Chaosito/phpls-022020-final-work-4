@@ -4,86 +4,63 @@
 @section('content-top', '')
 
 @section('content-main')
-
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">IsAdmin?</label>
-
-                            <div class="col-md-6">
-                                <input id="is-admin" type="checkbox" class="form-control" name="is_admin" value="1">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+    <div class="content-main__container">
+        <form method="POST" action="{{ route('register') }}">
+            @csrf
+            <div class="products-columns">
+                <table class="table-custom-form">
+                    <tbody>
+                    <tr>
+                        <td>{{ __('Name') }}</td>
+                        <td>
+                            <input id="name" type="text" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                            @error('name')
+                            <div class="inline-error">{{ $message }}</div>
+                            @enderror
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>{{ __('E-Mail Address') }}</td>
+                        <td>
+                            <input id="email" type="email" name="email" value="{{ old('email') }}" required autocomplete="email">
+                            @error('email')
+                            <div class="inline-error">{{ $message }}</div>
+                            @enderror
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>{{ __('Password') }}</td>
+                        <td>
+                            <input id="password" type="password" name="password" required autocomplete="new-password">
+                            @error('password')
+                            <div class="inline-error">{{ $message }}</div>
+                            @enderror
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>{{ __('Confirm Password') }}</td>
+                        <td>
+                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>
+                            <input id="is-admin" type="checkbox" class="form-control" name="is_admin" value="1" {{ old('is_admin') ? 'checked' : '' }}>
+                            <label class="form-check-label" for="remember">
+                                IsAdmin
+                            </label>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div style="width:100%;margin-top:30px;">
+                    <button type="submit" class="btn">
+                        {{ __('Register') }}
+                    </button>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
-</div>
+    <div class="content-footer__container"></div>
 @endsection
