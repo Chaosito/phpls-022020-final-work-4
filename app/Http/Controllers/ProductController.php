@@ -70,7 +70,6 @@ class ProductController extends Controller
 
     public function save($id, Request $request)
     {
-//            dd($id, $request);
         $this->validate($request, [
             'category_id' => 'required|integer|min:1',
             'title' => 'required',

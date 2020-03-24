@@ -47,4 +47,44 @@ class NewsController extends Controller
         $newsItem = News::query()->where('id','=', $id)->first();
         return view('news.item', ['title' => 'Новости', 'news_item' => $newsItem]);
     }
+
+    public function edit($id)
+    {
+        $newsObject = News::query()->find($id);
+        return view('news.edit', [
+            'title' => 'Добавление продукта',
+            'news' => $newsObject
+        ]);
+    }
+
+    public function delete($id)
+    {
+        News::query()->find($id)->delete(); // and picture
+        return redirect()->route('news');
+    }
+
+    public function save($id, Request $request)
+    {
+        $this->validate($request, [
+            'title' => 'required',
+            'description' => 'required',
+            'image' => 'image',
+        ]);
+
+        $news = News::query()->find($id);
+
+        if ($request->hasFile('image')){
+            $newFileName = date('mdYHis').uniqid().'.'.$request->file('image')->extension();
+            $request->file('image')->move(self::UPLOAD_IMAGES_DIR, $newFileName);
+            unlink($news->image_path);
+            $news->image_path = self::UPLOAD_IMAGES_DIR.DIRECTORY_SEPARATOR.$newFileName;
+        }
+
+        $news->title = $request->title;
+        $news->description = $request->description;
+        $news->save();
+
+        return redirect()->route('news.item', ['id' => $id]);
+    }
+
 }
