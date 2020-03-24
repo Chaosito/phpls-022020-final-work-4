@@ -31,7 +31,9 @@ class HomeController extends Controller
 
     public function about()
     {
-        return view('about', ['title' => 'О магазине']);
+        $ourProducts = Product::all();
+        $ourProducsArray = [$ourProducts->random(), $ourProducts->random(), $ourProducts->random()];
+        return view('about', ['title' => 'О магазине', 'our_products' => $ourProducsArray]);
     }
 
     public function search(Request $request)

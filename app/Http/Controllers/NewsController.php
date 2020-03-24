@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\News;
+use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -44,8 +45,10 @@ class NewsController extends Controller
 
     public function item($id)
     {
+        $ourProducts = Product::all();
+        $ourProducsArray = [$ourProducts->random(), $ourProducts->random(), $ourProducts->random()];
         $newsItem = News::query()->where('id','=', $id)->first();
-        return view('news.item', ['title' => 'Новости', 'news_item' => $newsItem]);
+        return view('news.item', ['title' => 'Новости', 'news_item' => $newsItem, 'our_products' => $ourProducsArray]);
     }
 
     public function edit($id)
