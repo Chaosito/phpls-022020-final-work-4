@@ -36,7 +36,7 @@ class ProductCategoryController extends Controller
         $request->description = $request->description == null ? '' : $request->description;
 
         ProductCategories::query()->where('id', $id)->update(['title' => $request->title, 'description' => $request->description]);
-        return redirect()->route('category.edit', ['id' => $id]);
+        return redirect()->route('category.all', ['id' => $id]);
     }
 
     public function delete($id)
@@ -68,6 +68,6 @@ class ProductCategoryController extends Controller
         $productCategory->title = $request->title;
         $productCategory->description = $request->description;
         $productCategory->save();
-        return redirect()->route('category.edit', ['id' => $productCategory->id]);
+        return redirect()->route('category.all', ['id' => $productCategory->id]);
     }
 }
