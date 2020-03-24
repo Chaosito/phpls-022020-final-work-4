@@ -55,7 +55,7 @@ class NewsController extends Controller
     {
         $newsObject = News::query()->find($id);
         return view('news.edit', [
-            'title' => 'Добавление продукта',
+            'title' => 'Редактирование новости',
             'news' => $newsObject
         ]);
     }

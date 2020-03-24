@@ -7,55 +7,68 @@
         <form method="POST" autocomplete="off" enctype="multipart/form-data">
             @csrf
             <div class="products-columns">
-                <table style="width:100%;">
+                <table class="table-custom-form">
                     <tbody>
-                    <tr>
-                        <td>Category</td>
-                        <td>
-                            <select name="category_id">
-                                <option></option>
-                                @foreach($categories as $cat)
-                                    <option value="{{ $cat->id }}"
-                                            @if($cat->id == $product->category_id)
-                                            selected
-                                        @endif
-                                    >{{ $cat->title }}</option>
-                                @endforeach
-                            </select>
-                            @if($errors->has('category_id'))
-                                <span style="color:red;">{{ $errors->first('category_id') }}</span>
-                            @endif
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Title</td>
-                        <td>
-                            <input type="text" name="title" value="{{ $product->title }}" />
-                            @if($errors->has('title'))
-                                <span style="color:red;">{{ $errors->first('title') }}</span>
-                            @endif
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Price</td>
-                        <td>
-                            <input type="text" name="price" value="{{ $product->price }}" />
-                            @if($errors->has('price'))
-                                <span style="color:red;">{{ $errors->first('price') }}</span>
-                            @endif
-                        </td>
-                    </tr>
-                    <tr><td>Description</td><td><textarea name="description">{!! $product->description !!}</textarea>
-                            @if($errors->has('description'))
-                                <span style="color:red;">{{ $errors->first('description') }}</span>
-                            @endif</td></tr>
-                    <tr><td>Image</td><td><input type="file" name="image" />
-                            @if($errors->has('image'))
-                                <span style="color:red;">{{ $errors->first('image') }}</span>
-                            @endif</td></tr>
+                        <tr>
+                            <td>Category</td>
+                            <td>
+                                <select name="category_id">
+                                    <option></option>
+                                    @foreach($categories as $cat)
+                                        <option value="{{ $cat->id }}"
+                                                @if($cat->id == $product->category_id)
+                                                selected
+                                            @endif
+                                        >{{ $cat->title }}</option>
+                                    @endforeach
+                                </select>
+                                @if($errors->has('category_id'))
+                                    <div class="inline-error">{{ $errors->first('category_id') }}</div>
+                                @endif
+                            </td>
+                            <td rowspan="5">
+                                <img src="{{ asset($product->photo_path) }}" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Title</td>
+                            <td>
+                                <input type="text" name="title" value="{{ $product->title }}" />
+                                @if($errors->has('title'))
+                                    <div class="inline-error">{{ $errors->first('title') }}</div>
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Price</td>
+                            <td>
+                                <input type="text" name="price" value="{{ $product->price }}" />
+                                @if($errors->has('price'))
+                                    <div class="inline-error">{{ $errors->first('price') }}</div>
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Description</td>
+                            <td>
+                                <textarea name="description">{!! $product->description !!}</textarea>
+                                @if($errors->has('description'))
+                                    <div class="inline-error">{{ $errors->first('description') }}</div>
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Image</td>
+                            <td>
+                                <input type="file" name="image" />
+                                @if($errors->has('image'))
+                                    <div class="inline-error">{{ $errors->first('image') }}</div>
+                                @endif
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
-                <input type="submit" value="Save" style="margin-top:30px;" />
+                <input type="submit" class="btn" value="Save" style="margin-top:30px;" />
             </div>
         </form>
     </div>

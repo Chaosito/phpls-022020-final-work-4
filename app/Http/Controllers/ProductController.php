@@ -62,7 +62,7 @@ class ProductController extends Controller
         $product = Product::query()->find($id);
         $allCategories = ProductCategories::all();
         return view('products.edit', [
-            'title' => 'Добавление продукта',
+            'title' => 'Редактирование продукта',
             'categories' => $allCategories,
             'product' => $product
         ]);

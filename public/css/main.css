@@ -1126,3 +1126,29 @@ a img.aligncenter {
   width: 130%;
   background-color: #d0e26c;
   z-index: -5; }
+
+/* Custom CSS */
+.table-custom-form {
+    width:100%;
+}
+.table-custom-form tr td:first-child {
+    vertical-align: top;
+    width:13%;
+}
+.table-custom-form .inline-error {
+    margin-bottom: 10px;
+    color:red;
+}
+.table-custom-form tr td select {
+    width:454px;
+}
+.table-custom-form tr td input[type=text] {
+    width:450px;
+}
+.table-custom-form tr td textarea {
+    width:448px;
+    height:128px;
+}
+.table-custom-form tr td img {
+    width:250px;
+}
