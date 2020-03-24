@@ -20,12 +20,13 @@
         @endif
         <!-- Main content block -->
         <div class="news-block content-text">
-            <h3 class="content-text__title">
-                {{ $news_item->title }}
-            </h3><img src="{{ asset($news_item->image_path) }}" alt="Image" class="alignleft img-news">
-            <p>
-                {!! $news_item->description !!}
-            </p>
+            <h3 class="content-text__title">{{ $news_item->title }}</h3>
+            <img src="{{ asset($news_item->image_path) }}" alt="Image" class="alignleft img-news">
+            <div style="min-height: 150px;">
+                <p>
+                    {!! $news_item->description !!}
+                </p>
+            </div>
         </div>
         <!-- /Main content block -->
     </div>
