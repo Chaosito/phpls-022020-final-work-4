@@ -8,7 +8,7 @@
             <nav>
                 <ul class="page-nav">
                     <li class="page-nav__item">
-                        <a href="{{ Route('products.category.add') }}" class="page-nav__item__link">Add</a>
+                        <a href="{{ Route('category.add') }}" class="page-nav__item__link">Add</a>
                     </li>
                 </ul>
             </nav>

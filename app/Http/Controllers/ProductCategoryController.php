@@ -29,6 +29,12 @@ class ProductCategoryController extends Controller
 
     public function save($id, Request $request)
     {
+        $this->validate($request, [
+            'title' => 'required'
+        ]);
+        // Allow empty description
+        $request->description = $request->description == null ? '' : $request->description;
+
         ProductCategories::query()->where('id', $id)->update(['title' => $request->title, 'description' => $request->description]);
         return redirect()->route('products.category.edit', ['id' => $id]);
     }
@@ -46,5 +52,21 @@ class ProductCategoryController extends Controller
 
     public function add()
     {
+        return view('categories.add', ['title' => 'Добавление категории']);
+    }
+
+    public function append(Request $request)
+    {
+        $this->validate($request, [
+            'title' => 'required'
+        ]);
+        // Allow empty description
+        $request->description = $request->description == null ? '' : $request->description;
+
+        $productCategory = new ProductCategories();
+        $productCategory->title = $request->title;
+        $productCategory->description = $request->description;
+        $productCategory->save();
+        return redirect()->route('products.category.edit', ['id' => $productCategory->id]);
     }
 }

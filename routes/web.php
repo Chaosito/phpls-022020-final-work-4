@@ -31,6 +31,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Конкретный продукт
 Route::get('/products/{id}', 'ProductController@item')->name('products.item');
 
+
+// Создание категории
+Route::get('/category/add', 'ProductCategoryController@add')->name('category.add');
+Route::post('/category/add', 'ProductCategoryController@append')->name('category.add.save');
+
 // Просмотр товаров по определенной категории
 Route::get('/category/{id}', 'ProductCategoryController@index')->name('products.category');
 
@@ -38,8 +43,6 @@ Route::get('/category/{id}', 'ProductCategoryController@index')->name('products.
 Route::get('/category/{id}/edit', 'ProductCategoryController@edit')->name('products.category.edit')->middleware('auth');
 Route::post('/category/{id}/edit', 'ProductCategoryController@save')->name('products.category.edit.save')->middleware('auth');
 
-// Создание категории
-Route::get('/category/add', 'ProductCategoryController@add')->name('products.category.add')->middleware('auth');
 
 // Удаление категории
 Route::get('/category/{id}/delete', 'ProductCategoryController@delete')->name('products.category.delete');
