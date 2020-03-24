@@ -34,6 +34,8 @@
             $('#summary').val(price * $(this).val());
         });
         $('form').submit(function(e){
+            var btnSubmit = $('button[type=submit]');
+            btnSubmit.prop('disabled', true);
             e.preventDefault();
             $.post($(this).attr('action'), $(this).serialize(), function() {
                 alert( "Заказ успешно оформлен!\nНаш менеджер свяжется с Вами в ближайшее время." );

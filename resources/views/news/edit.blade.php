@@ -30,6 +30,7 @@
                     <tr>
                         <td>
                             Image</td><td><input type="file" name="image" />
+                            <img style="width:250px;" src="{{ asset($news->image_path) }}" />
                             @if($errors->has('image'))
                                 <span style="color:red;">{{ $errors->first('image') }}</span>
                             @endif

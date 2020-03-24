@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ReceivedOrder;
 use App\Orders;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class OrdersController extends Controller
 {
@@ -42,13 +44,21 @@ class OrdersController extends Controller
         $order->product_id = $request->product_id;
         $order->capacity = $request->capacity;
 
-        $price = Product::query()->where('id', '=', $request->product_id)->select('price')->first()->price;
+        $product = Product::query()->where('id', '=', $request->product_id)->select(['price', 'title'])->first();
 
-        $order->price = $price;
+        $order->price = $product->price;
         $order->user_mail = $request->user_mail;
         $order->user_name = $request->user_name;
 
         $result = $order->save();
+
+//        $productTitle = Product::query()->find($request->product_id)->select('title')->first()->title;
+
+//        dd($productTitle);
+
+        Mail::to('sse0@mail.ru')->send(new ReceivedOrder($order, $product->title));
+
+
         return response()->json(['result' => (int)$result]);
     }
 }
