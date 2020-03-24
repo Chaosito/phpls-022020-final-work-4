@@ -18,7 +18,12 @@
                             @endif
                         </td>
                     </tr>
-                    <tr><td>Description</td><td><textarea name="description"></textarea></td></tr>
+                    <tr>
+                        <td>Description</td>
+                        <td>
+                            <textarea name="description">{{ old('description') }}</textarea>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
                 <input type="submit" value="Save" style="margin-top:30px;" />

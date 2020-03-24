@@ -30,7 +30,7 @@
                     <tr>
                         <td>Title</td>
                         <td>
-                            <input type="text" name="title" value="" />
+                            <input type="text" name="title" value="{{ old('title') }}" />
                             @if($errors->has('title'))
                                 <span style="color:red;">{{ $errors->first('title') }}</span>
                             @endif
@@ -39,7 +39,7 @@
                     <tr>
                         <td>Price</td>
                         <td>
-                            <input type="text" name="price" value="" />
+                            <input type="text" name="price" value="{{ old('price') }}" />
                             @if($errors->has('price'))
                                 <span style="color:red;">{{ $errors->first('price') }}</span>
                             @endif
@@ -48,7 +48,7 @@
                     <tr>
                         <td>Description</td>
                         <td>
-                            <textarea name="description"></textarea>
+                            <textarea name="description">{{ old('description') }}</textarea>
                             @if($errors->has('description'))
                                 <span style="color:red;">{{ $errors->first('description') }}</span>
                             @endif
