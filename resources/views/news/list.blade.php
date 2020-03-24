@@ -4,6 +4,17 @@
 
 @section('content-main')
     <div class="content-main__container">
+        @if(Auth::user() && Auth::user()->is_admin)
+            <div class="content-footer__container">
+                <nav>
+                    <ul class="page-nav">
+                        <li class="page-nav__item">
+                            <a href="{{ Route('news.add') }}" class="page-nav__item__link">Добавить новость</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        @endif
         <div class="news-list__container">
             @foreach($news as $news_item)
             <div class="news-list__item">

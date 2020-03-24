@@ -5,15 +5,15 @@
 @section('content-main')
     <div class="content-main__container">
         @if(Auth::user() && Auth::user()->is_admin)
-        <div class="content-footer__container">
-            <nav>
-                <ul class="page-nav">
-                    <li class="page-nav__item">
-                        <a href="{{ Route('product.add', ['category_id' => $category_id]) }}" class="page-nav__item__link">Добавить продукт</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+            <div class="content-footer__container">
+                <nav>
+                    <ul class="page-nav">
+                        <li class="page-nav__item">
+                            <a href="{{ Route('product.add', ['category_id' => $category_id]) }}" class="page-nav__item__link">Добавить продукт</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         @endif
         <div class="products-columns">
             @foreach($last_products as $product)

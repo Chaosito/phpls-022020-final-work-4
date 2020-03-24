@@ -13,12 +13,13 @@ use Illuminate\Support\Facades\Route;
  *  +++Оформление заказа (JS-Order)
  *  Отправка на почту
  *  +++"Больше категорий"
- *  Редактирование настроек, категорий, продуктов, новостей
+ *  +++ Редактирование настроек, категорий, продуктов,
+ *  новостей
  *  Поиск
  *  Формы регистрации и авторизации к нормальному виду
  *  Профиль?
- *  Форму редактирования категорий
- *  Ошибка удаления категории
+ *  +++Форму редактирования категорий
+ *  ++Ошибка удаления категории
  */
 
 Auth::routes();
@@ -56,6 +57,8 @@ Route::get('/about', 'HomeController@about')->name('about');
 
 // Список новостей
 Route::get('/news', 'NewsController@list')->name('news');
+Route::get('/news/add', 'NewsController@add')->name('news.add')->middleware('auth');
+Route::post('/news/add', 'NewsController@append')->middleware('auth');
 
 // Конкретная новость
 Route::get('/news/{id}', 'NewsController@item')->name('news.item');

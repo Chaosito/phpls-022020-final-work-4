@@ -12,13 +12,13 @@ class ProductCategoryController extends Controller
     {
         $categoryTitle = ProductCategories::query()->select('title')->where('id', $id)->first()->title;
         $lastProducts = Product::query()->where('category_id','=',$id)->orderBy('id', 'desc')->paginate(6);
-        return view('products.by-category', ['title' => 'Игры в разделе '.$categoryTitle, 'last_products' => $lastProducts, 'category_id' => $id]);
+        return view('categories.item', ['title' => 'Игры в разделе '.$categoryTitle, 'last_products' => $lastProducts, 'category_id' => $id]);
     }
 
     public function listAll()
     {
         $categories = ProductCategories::with('products')->orderBy('title')->paginate(20);
-        return view('products.categories', ['title' => 'Все категории', 'categories' => $categories]);
+        return view('categories.list', ['title' => 'Все категории', 'categories' => $categories]);
     }
 
     public function edit($id)
