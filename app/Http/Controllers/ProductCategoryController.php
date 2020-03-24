@@ -36,7 +36,7 @@ class ProductCategoryController extends Controller
         $request->description = $request->description == null ? '' : $request->description;
 
         ProductCategories::query()->where('id', $id)->update(['title' => $request->title, 'description' => $request->description]);
-        return redirect()->route('products.category.edit', ['id' => $id]);
+        return redirect()->route('category.edit', ['id' => $id]);
     }
 
     public function delete($id)
@@ -46,7 +46,7 @@ class ProductCategoryController extends Controller
             return "Категори содержит продукты. Нельзя удалить не пустую категорию!";
         } else {
             ProductCategories::query()->find($id)->delete();
-            return redirect()->route('products.category.all');
+            return redirect()->route('category.all');
         }
     }
 
@@ -67,6 +67,6 @@ class ProductCategoryController extends Controller
         $productCategory->title = $request->title;
         $productCategory->description = $request->description;
         $productCategory->save();
-        return redirect()->route('products.category.edit', ['id' => $productCategory->id]);
+        return redirect()->route('category.edit', ['id' => $productCategory->id]);
     }
 }

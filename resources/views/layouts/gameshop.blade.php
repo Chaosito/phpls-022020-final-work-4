@@ -93,13 +93,13 @@
                     <ul class="sidebar-category">
                         @foreach($main_categories as $category)
                             <li class="sidebar-category__item">
-                                <a href="{{Route('products.category', ['id' => $category->id])}}" class="sidebar-category__item__link">
+                                <a href="{{Route('category.in', ['id' => $category->id])}}" class="sidebar-category__item__link">
                                     {{ $category->title }}
                                 </a>
                             </li>
                         @endforeach
                         <li class="sidebar-category__item">
-                            <a href="{{Route('products.category.all')}}" class="sidebar-category__item__link">
+                            <a href="{{Route('category.all')}}" class="sidebar-category__item__link">
                                 Больше категорий
                             </a>
                         </li>

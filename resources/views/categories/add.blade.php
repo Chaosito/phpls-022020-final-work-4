@@ -4,7 +4,7 @@
 
 @section('content-main')
     <div class="content-main__container">
-        <form method="POST" autocomplete="off" action="{{ Route('category.add.save') }}">
+        <form method="POST" autocomplete="off">
             @csrf
             <div class="products-columns">
                 <table style="width:100%;">

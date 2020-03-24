@@ -21,34 +21,52 @@ use Illuminate\Support\Facades\Route;
  *  Ошибка удаления категории
  */
 
-Route::get('/', 'HomeController@index')->name('index');
-
 Auth::routes();
+
+// Главная страница
+Route::get('/', 'HomeController@index')->name('index');
 
 // To-Do: Возможно в будущем сделать профиль юзера
 Route::get('/home', 'HomeController@index')->name('home');
 
-// Конкретный продукт
-Route::get('/products/{id}', 'ProductController@item')->name('products.item');
 
 
 // Создание категории
-Route::get('/category/add', 'ProductCategoryController@add')->name('category.add');
-Route::post('/category/add', 'ProductCategoryController@append')->name('category.add.save');
 
-// Просмотр товаров по определенной категории
-Route::get('/category/{id}', 'ProductCategoryController@index')->name('products.category');
+Route::group(['prefix' => 'category'], function(){
+
+
 
 // Редактирование категории
-Route::get('/category/{id}/edit', 'ProductCategoryController@edit')->name('products.category.edit')->middleware('auth');
-Route::post('/category/{id}/edit', 'ProductCategoryController@save')->name('products.category.edit.save')->middleware('auth');
-
 
 // Удаление категории
-Route::get('/category/{id}/delete', 'ProductCategoryController@delete')->name('products.category.delete');
 
 // To-Do: Список всех категорий
-Route::get('products/category/list', 'ProductCategoryController@listAll')->name('products.category.all');
+
+// Просмотр товаров по определенной категории
+//    Route::get('{id}', 'ProductCategoryController@index')->where('id', '[0-9]+')->name('products.category');
+
+});
+
+Route::group(['prefix' => 'category'], function(){
+    Route::post('add', 'ProductCategoryController@append')->middleware('auth');
+    Route::post('{id}/edit', 'ProductCategoryController@save')->middleware('auth');
+
+    Route::name( 'category.')->group(function() {
+        Route::get('add', 'ProductCategoryController@add')->name('add')->middleware('auth');
+        Route::get('{id}/edit', 'ProductCategoryController@edit')->name('edit')->middleware('auth');
+        Route::get('{id}/delete', 'ProductCategoryController@delete')->name('delete')->middleware('auth');
+        Route::get('list', 'ProductCategoryController@listAll')->name('all');
+        Route::get('{id}', 'ProductCategoryController@index')->name('in');
+    });
+});
+
+
+
+
+
+// Конкретный продукт
+Route::get('/products/{id}', 'ProductController@item')->name('products.item');
 
 // About
 Route::get('/about', 'HomeController@about')->name('about');
