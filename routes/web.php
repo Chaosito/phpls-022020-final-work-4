@@ -23,10 +23,11 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 // Главная страница
+Route::redirect('/home','/');
 Route::get('/', 'HomeController@index')->name('index');
 
 // To-Do: Возможно в будущем сделать профиль юзера
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
 
 
