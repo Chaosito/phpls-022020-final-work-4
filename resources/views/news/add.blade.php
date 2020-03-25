@@ -7,14 +7,14 @@
         <form method="POST" autocomplete="off" enctype="multipart/form-data">
             @csrf
             <div class="products-columns">
-                <table style="width:100%;">
+                <table class="table-custom-form">
                     <tbody>
                     <tr>
                         <td>Title</td>
                         <td>
                             <input type="text" name="title" value="{{ old('title') }}" />
                             @if($errors->has('title'))
-                                <span style="color:red;">{{ $errors->first('title') }}</span>
+                                <div class="inline-error">{{ $errors->first('title') }}</div>
                             @endif
                         </td>
                     </tr>
@@ -23,7 +23,7 @@
                         <td>
                             <textarea name="description">{{ old('description') }}</textarea>
                             @if($errors->has('description'))
-                                <span style="color:red;">{{ $errors->first('description') }}</span>
+                                <div class="inline-error">{{ $errors->first('description') }}</div>
                             @endif
                         </td>
                     </tr>
@@ -31,7 +31,7 @@
                         <td>
                             Image</td><td><input type="file" name="image" />
                             @if($errors->has('image'))
-                                <span style="color:red;">{{ $errors->first('image') }}</span>
+                                <div class="inline-error">{{ $errors->first('image') }}</div>
                             @endif
                         </td>
                     </tr>

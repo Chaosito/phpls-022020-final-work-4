@@ -7,15 +7,18 @@
         <form method="POST" autocomplete="off" enctype="multipart/form-data">
             @csrf
             <div class="products-columns">
-                <table style="width:100%;">
+                <table class="table-custom-form">
                     <tbody>
                     <tr>
                         <td>Title</td>
                         <td>
                             <input type="text" name="title" value="{{ $news->title }}" />
                             @if($errors->has('title'))
-                                <span style="color:red;">{{ $errors->first('title') }}</span>
+                                <div class="inline-error">{{ $errors->first('title') }}</div>
                             @endif
+                        </td>
+                        <td rowspan="3">
+                            <img style="width:250px;" src="{{ asset($news->image_path) }}" />
                         </td>
                     </tr>
                     <tr>
@@ -23,16 +26,15 @@
                         <td>
                             <textarea name="description">{!! $news->description !!}</textarea>
                             @if($errors->has('description'))
-                                <span style="color:red;">{{ $errors->first('description') }}</span>
+                                <div class="inline-error">{{ $errors->first('description') }}</div>
                             @endif
                         </td>
                     </tr>
                     <tr>
                         <td>
                             Image</td><td><input type="file" name="image" />
-                            <img style="width:250px;" src="{{ asset($news->image_path) }}" />
                             @if($errors->has('image'))
-                                <span style="color:red;">{{ $errors->first('image') }}</span>
+                                <div class="inline-error">{{ $errors->first('image') }}</div>
                             @endif
                         </td>
                     </tr>
