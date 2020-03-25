@@ -33,6 +33,5 @@ class Controller extends BaseController
         View::share('phone_to', $phoneTo->value);
         View::share('last_news', $lastNews);
         View::share('title', 'Unnamed page');
-//
     }
 }

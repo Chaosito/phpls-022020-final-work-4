@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
  *  resize crop img on news & products
  *  +++Поиск
  *  +++Отправка на почту
+ * middleware
  * FullTests with zero-config
  */
 

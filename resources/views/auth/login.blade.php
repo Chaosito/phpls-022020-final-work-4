@@ -3,7 +3,6 @@
 @section('title', __('auth.Login'))
 @section('content-top', '')
 
-
 @section('content-main')
     <div class="content-main__container">
         <form method="POST" action="{{ route('login') }}">

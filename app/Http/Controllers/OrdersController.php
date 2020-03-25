@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\ReceivedOrder;
 use App\Orders;
 use App\Product;
+use App\Settings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -13,7 +14,6 @@ class OrdersController extends Controller
 {
     public function myOrders()
     {
-
         $myOrders = Orders::with('product')
             ->where('user_id', '=', Auth::User()->id)
             ->orderByDesc('id')
@@ -23,11 +23,8 @@ class OrdersController extends Controller
 
     public function buyWindow($id)
     {
-
         $userName = (Auth::User() ? Auth::User()->name : '');
         $userMail = (Auth::User() ? Auth::User()->email : '');
-        // product name, description, price, count
-
         $product = Product::query()->where('id', '=', $id)->first();
 
         return view('orders.buy-window', ['id' => $id, 'product' => $product, 'user_name' => $userName, 'user_mail' => $userMail]);
@@ -52,12 +49,8 @@ class OrdersController extends Controller
 
         $result = $order->save();
 
-//        $productTitle = Product::query()->find($request->product_id)->select('title')->first()->title;
-
-//        dd($productTitle);
-
-        Mail::to('sse0@mail.ru')->send(new ReceivedOrder($order, $product->title));
-
+        $adminMail = Settings::query()->where('key', 'orders_mail_to')->first()->value;
+        Mail::to($adminMail)->send(new ReceivedOrder($order, $product->title));
 
         return response()->json(['result' => (int)$result]);
     }
