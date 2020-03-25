@@ -34,7 +34,7 @@
             $('#summary').val(price * $(this).val());
         });
         $('form').submit(function(e){
-            var btnSubmit = $('button[type=submit]');
+            var btnSubmit = $('input[type=submit]');
             btnSubmit.prop('disabled', true);
             e.preventDefault();
             $.post($(this).attr('action'), $(this).serialize(), function() {
