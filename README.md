@@ -29,7 +29,7 @@ CREATE DATABASE `final-work-4`CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 cp .env.example .env
 ```
 
-##### 6. Внести свои данные пользователя и БД в файл настроек
+##### 6. Внести свои данные пользователя, БД и почтового сервера в файл настроек
 ```
 .env
 ```
