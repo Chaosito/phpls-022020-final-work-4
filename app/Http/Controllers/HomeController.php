@@ -38,7 +38,13 @@ class HomeController extends Controller
 
     public function search(Request $request)
     {
-//        dd($request);
-        return view('about', ['title' => 'Поиск "'.$request->q.'"']);
+        // Здесь можно (нужно) было использовать всякие крутые штуки для поиска,
+        // типа Laravel Scout или ElasticSearch, но не будем заморачиваться,
+        // сделаем примитивный поиск по БД.
+        $products = Product::query()
+            ->where('title', 'LIKE', '%'.$request->q.'%')
+            ->orWhere('description', 'LIKE', '%'.$request->q.'%')
+            ->paginate(6);
+        return view('search', ['title' => 'Поиск "'.$request->q.'"', 'products' => $products]);
     }
 }
