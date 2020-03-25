@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductCategoriesRequest;
 use App\Product;
 use App\ProductCategories;
 use Illuminate\Http\Request;
@@ -27,11 +28,8 @@ class ProductCategoryController extends Controller
         return view('categories.edit', ['title' => 'Редактирование категории', 'category' => $category]);
     }
 
-    public function save($id, Request $request)
+    public function save($id, ProductCategoriesRequest $request)
     {
-        $this->validate($request, [
-            'title' => 'required'
-        ]);
         // Allow empty description
         $request->description = $request->description == null ? '' : $request->description;
 
@@ -56,11 +54,8 @@ class ProductCategoryController extends Controller
         return view('categories.add', ['title' => 'Добавление категории']);
     }
 
-    public function append(Request $request)
+    public function append(ProductCategoriesRequest $request)
     {
-        $this->validate($request, [
-            'title' => 'required'
-        ]);
         // Allow empty description
         $request->description = $request->description == null ? '' : $request->description;
 
