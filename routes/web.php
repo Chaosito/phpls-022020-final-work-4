@@ -58,6 +58,7 @@ Route::group(['prefix' => 'news'], function() {
 Route::name( 'orders.')->group(function() {
     Route::get('/myorders', 'OrdersController@myOrders')->name('my')->middleware('auth');
     Route::get('/buy-window/{id}', 'OrdersController@buyWindow')->name('buy-window');
+    Route::get('/orders', 'OrdersController@allOrders')->name('all')->middleware('auth', 'admins.only');
 });
 
 // О нас

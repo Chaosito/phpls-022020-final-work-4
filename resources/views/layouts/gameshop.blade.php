@@ -82,6 +82,11 @@
                                 Настройки
                             </a>
                         </li>
+                        <li class="sidebar-category__item">
+                            <a href="{{Route('orders.all')}}" class="sidebar-category__item__link">
+                                Заказы
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

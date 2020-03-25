@@ -54,4 +54,12 @@ class OrdersController extends Controller
 
         return response()->json(['result' => (int)$result]);
     }
+
+    public function allOrders()
+    {
+        $orders = Orders::with('product')
+            ->orderByDesc('id')
+            ->paginate(8);
+        return view('orders.all', ['title' => 'Заказы', 'orders' => $orders]);
+    }
 }
