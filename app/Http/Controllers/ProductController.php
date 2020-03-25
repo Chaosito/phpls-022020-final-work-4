@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\ProductCategories;
 use Illuminate\Http\Request;
+use Intervention\Image\ImageManagerStatic as Image;
+
 
 class ProductController extends Controller
 {
@@ -31,8 +33,12 @@ class ProductController extends Controller
         ]);
 
         $newFileName = date('mdYHis').uniqid().'.'.$request->file('image')->extension();
-        $request->file('image')->move(self::UPLOAD_IMAGES_DIR, $newFileName);
 
+//        $img = Image::make($request->file('image')->getRealPath());
+//        $img->resize(300,300);
+//        $img->save(public_path('images/ServiceImages/' .$request->file('image')->extension()));
+
+        $request->file('image')->move(self::UPLOAD_IMAGES_DIR, $newFileName);
 
         $newProduct = new Product();
         $newProduct->category_id = $request->category_id;
@@ -42,7 +48,7 @@ class ProductController extends Controller
         $newProduct->photo_path = self::UPLOAD_IMAGES_DIR.DIRECTORY_SEPARATOR.$newFileName;
         $newProduct->save();
 
-        return redirect()->route('products.item', ['id' => $newProduct->id]);
+        return redirect()->route('product.item', ['id' => $newProduct->id]);
     }
 
     public function item($id)
@@ -93,7 +99,7 @@ class ProductController extends Controller
         $product->description = $request->description;
         $product->save();
 
-        return redirect()->route('products.item', ['id' => $id]);
+        return redirect()->route('product.item', ['id' => $id]);
     }
 
     public function delete($id)

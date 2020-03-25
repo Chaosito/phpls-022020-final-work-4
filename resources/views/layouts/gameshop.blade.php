@@ -164,10 +164,10 @@
                 <div class="random-product-container__content">
                     <div class="item-product">
                         <div class="item-product__title-product">
-                            <a href="{{ Route('products.item', ['id' => $random_footer_item->id]) }}" class="item-product__title-product__link">{{ $random_footer_item->title }}</a>
+                            <a href="{{ Route('product.item', ['id' => $random_footer_item->id]) }}" class="item-product__title-product__link">{{ $random_footer_item->title }}</a>
                         </div>
                         <div class="item-product__thumbnail">
-                            <a href="{{ Route('products.item', ['id' => $random_footer_item->id]) }}" class="item-product__thumbnail__link">
+                            <a href="{{ Route('product.item', ['id' => $random_footer_item->id]) }}" class="item-product__thumbnail__link">
                                 <img src="{{ asset($random_footer_item->photo_path) }}" alt="Preview-image" class="item-product__thumbnail__link__img">
                             </a>
                         </div>

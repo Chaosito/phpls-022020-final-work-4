@@ -47,12 +47,12 @@
             @foreach($our_products as $product)
                 <div class="products-columns__item">
                     <div class="products-columns__item__title-product">
-                        <a href="#" class="products-columns__item__title-product__link">
+                        <a href="{{ Route('product.item', ['id' => $product->id]) }}" class="products-columns__item__title-product__link">
                             {{ $product->title }}
                         </a>
                     </div>
                     <div class="products-columns__item__thumbnail">
-                        <a href="#" class="products-columns__item__thumbnail__link">
+                        <a href="{{ Route('product.item', ['id' => $product->id]) }}" class="products-columns__item__thumbnail__link">
                             <img src="{{ asset($product->photo_path) }}" alt="Preview-image" class="products-columns__item__thumbnail__img">
                         </a>
                     </div>
