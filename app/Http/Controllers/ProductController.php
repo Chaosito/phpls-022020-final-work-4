@@ -34,11 +34,11 @@ class ProductController extends Controller
 
         $newFileName = date('mdYHis').uniqid().'.'.$request->file('image')->extension();
 
-//        $img = Image::make($request->file('image')->getRealPath());
-//        $img->resize(300,300);
-//        $img->save(public_path('images/ServiceImages/' .$request->file('image')->extension()));
+        $img = Image::make($request->file('image')->getRealPath());
+        $img->fit(616,353);
+        $img->save(public_path(self::UPLOAD_IMAGES_DIR.DIRECTORY_SEPARATOR.$newFileName));
 
-        $request->file('image')->move(self::UPLOAD_IMAGES_DIR, $newFileName);
+//        $request->file('image')->move(self::UPLOAD_IMAGES_DIR, $newFileName);
 
         $newProduct = new Product();
         $newProduct->category_id = $request->category_id;
@@ -88,7 +88,12 @@ class ProductController extends Controller
 
         if ($request->hasFile('image')){
             $newFileName = date('mdYHis').uniqid().'.'.$request->file('image')->extension();
-            $request->file('image')->move(self::UPLOAD_IMAGES_DIR, $newFileName);
+//            $request->file('image')->move(self::UPLOAD_IMAGES_DIR, $newFileName);
+
+            $img = Image::make($request->file('image')->getRealPath());
+            $img->fit(616,353);
+            $img->save(public_path(self::UPLOAD_IMAGES_DIR.DIRECTORY_SEPARATOR.$newFileName));
+
             unlink($product->photo_path);
             $product->photo_path = self::UPLOAD_IMAGES_DIR.DIRECTORY_SEPARATOR.$newFileName;
         }

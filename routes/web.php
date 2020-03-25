@@ -6,19 +6,6 @@ use Illuminate\Support\Facades\Route;
 | Web Routes
 */
 
-/*
- * To-Do:
- *  ++++кастом реквесты для общих валидаций
- *  +++Форма вид добавления/редактирования категорий, новостей
- *  resize crop img on news & products
- *  +++Поиск
- *  +++Отправка на почту
- *  +++middleware
- *  +++роуты причесать
- * FullTests with zero-config
- *
- */
-
 Auth::routes();
 
 // Главная страница
