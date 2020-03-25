@@ -2,44 +2,52 @@
 
 ## Выпускной проект №4 - "Laravel проект - интернет-каталог"
 
-##### 1. Create DB
+### Quick Guide:
 
+##### 1. Скачать или клонировать репозиторий:
+```
+git clone repo
+```
+
+##### 2. Настроить точку входа: 
+```
+phpls-022020-final-work-4/public
+```
+
+##### 3. Установить зависимости
+```
+composer install
+```
+
+##### 4. Создать пустую БД
 ```
 CREATE DATABASE `final-work-4`CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci; 
 ```
 
-##### 2. Create User
+##### 5. Создать файл настроек из шаблона
 ```
-CREATE USER 'final-work-4'@'localhost' IDENTIFIED BY 'final-work-4'; 
-```
-
-##### 1. Grant rights
-```
-GRANT ALTER, ALTER ROUTINE, CREATE, CREATE ROUTINE, CREATE TEMPORARY TABLES, CREATE VIEW, DELETE, DROP, EVENT, EXECUTE, INDEX, INSERT, LOCK TABLES, REFERENCES, SELECT, SHOW VIEW, TRIGGER, UPDATE ON `final-work-4`.* TO 'final-work-4'@'localhost' WITH GRANT OPTION; 
+cp .env.example .env
 ```
 
-##### 2. Install and set options:
-Site-path: phpls-022020-final-work-4/public
+##### 6. Внести свои данные пользователя и БД в файл настроек
+```
+.env
+```
 
-composer install
-
-copy .env.example to .env and fill
-
-php artisan key is missing (click button on page)
-
-
-##### Очистить базу (Если вдруг ранее были кривые миграции)
-`
-php artisan db:wipe
-`
-
-##### Запустить миграции (Создать БД)
-`
+##### 7. Запустить миграции
+```
 php artisan migrate
-`
+```
 
-##### Заполнить БД тестовыми данными
-`
+##### 8. Создать ключи шифрования
+```
+php artisan key:generate
+```
+
+##### 9. Добавить фейковых данных (можно использовать несколько раз):
+```
 php artisan db:seed
-`
+```
+
+##### 10. Enjoy!
 
