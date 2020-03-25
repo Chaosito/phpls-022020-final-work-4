@@ -7,14 +7,14 @@
         <form method="POST" autocomplete="off">
             @csrf
             <div class="products-columns">
-                <table style="width:100%;">
+                <table class="table-custom-form">
                     <tbody>
                     <tr>
                         <td>Title</td>
                         <td>
                             <input type="text" name="title" value="" />
                             @if($errors->has('title'))
-                                <span style="color:red;">{{ $errors->first('title') }}</span>
+                                <div class="inline-error">{{ $errors->first('title') }}</div>
                             @endif
                         </td>
                     </tr>
