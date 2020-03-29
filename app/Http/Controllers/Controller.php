@@ -17,11 +17,22 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    const SIDEBAR_CATEGORIES_COUNT = 5;
+    const SIDEBAR_NEWS_COUNT = 3;
+
     public function __construct()
     {
-        $categories = ProductCategories::query()->limit(5)->get(['id', 'title']);
-        $phoneTo = Settings::query()->select('value')->where('key','=','phone_number')->first();
-        $lastNews = News::query()->orderBy('id', 'desc')->limit(3)->get(['id', 'title', 'image_path']);
+        $categories = ProductCategories::query()->limit(self::SIDEBAR_CATEGORIES_COUNT)->get(['id', 'title']);
+
+        $phoneTo = Settings::query()
+            ->select('value')
+            ->where('key','=','phone_number')
+            ->first();
+
+        $lastNews = News::query()
+            ->orderBy('id', 'desc')
+            ->limit(self::SIDEBAR_NEWS_COUNT)
+            ->get(['id', 'title', 'image_path']);
 
         // Нам плевать на производительность ;)
         $allProducts = Product::all();

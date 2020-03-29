@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class NewsController extends Controller
 {
     const UPLOAD_IMAGES_DIR = 'img/cover';
+    const NEWS_PER_PAGE = 3;
 
     public function add()
     {
@@ -39,7 +40,7 @@ class NewsController extends Controller
 
     public function list()
     {
-        $news = News::query()->orderBy('id', 'desc')->paginate(3);
+        $news = News::query()->orderBy('id', 'desc')->paginate(self::NEWS_PER_PAGE);
         return view('news.list', ['title' => 'Новости', 'news' => $news]);
     }
 

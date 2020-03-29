@@ -12,12 +12,15 @@ use Illuminate\Support\Facades\Mail;
 
 class OrdersController extends Controller
 {
+    const MY_ORDERS_PER_PAGE = 4;
+    const ALL_ORDERS_PER_PAGE = 8;
+
     public function myOrders()
     {
         $myOrders = Orders::with('product')
             ->where('user_id', '=', Auth::User()->id)
             ->orderByDesc('id')
-            ->paginate(4);
+            ->paginate(self::MY_ORDERS_PER_PAGE);
         return view('orders.myorders', ['title' => 'Мои заказы', 'my_orders' => $myOrders]);
     }
 
@@ -59,7 +62,7 @@ class OrdersController extends Controller
     {
         $orders = Orders::with('product')
             ->orderByDesc('id')
-            ->paginate(8);
+            ->paginate(self::ALL_ORDERS_PER_PAGE);
         return view('orders.all', ['title' => 'Заказы', 'orders' => $orders]);
     }
 }

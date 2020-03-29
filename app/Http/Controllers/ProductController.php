@@ -11,6 +11,8 @@ use Intervention\Image\ImageManagerStatic as Image;
 class ProductController extends Controller
 {
     const UPLOAD_IMAGES_DIR = 'img/cover';
+    const IMAGE_OUT_WIDTH = 616;
+    const IMAGE_OUT_HEIGHT = 353;
 
     public function add(Request $request)
     {
@@ -35,7 +37,7 @@ class ProductController extends Controller
         $newFileName = date('mdYHis').uniqid().'.'.$request->file('image')->extension();
 
         $img = Image::make($request->file('image')->getRealPath());
-        $img->fit(616,353);
+        $img->fit(self::IMAGE_OUT_WIDTH,self::IMAGE_OUT_HEIGHT);
         $img->save(public_path(self::UPLOAD_IMAGES_DIR.DIRECTORY_SEPARATOR.$newFileName));
 
 //        $request->file('image')->move(self::UPLOAD_IMAGES_DIR, $newFileName);
@@ -86,12 +88,12 @@ class ProductController extends Controller
 
         $product = Product::query()->find($id);
 
-        if ($request->hasFile('image')){
+        if ($request->hasFile('image')) {
             $newFileName = date('mdYHis').uniqid().'.'.$request->file('image')->extension();
 //            $request->file('image')->move(self::UPLOAD_IMAGES_DIR, $newFileName);
 
             $img = Image::make($request->file('image')->getRealPath());
-            $img->fit(616,353);
+            $img->fit(self::IMAGE_OUT_WIDTH,self::IMAGE_OUT_HEIGHT);
             $img->save(public_path(self::UPLOAD_IMAGES_DIR.DIRECTORY_SEPARATOR.$newFileName));
 
             unlink($product->photo_path);

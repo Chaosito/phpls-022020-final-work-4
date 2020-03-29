@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    const INDEX_PRODUCTS_PER_PAGE = 6;
+    const SEARCH_RESULTS_PER_PAGE = 6;
+
     /**
      * Create a new controller instance.
      *
@@ -24,7 +27,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $lastProducts = Product::query()->orderBy('id', 'desc')->paginate(6);
+        $lastProducts = Product::query()
+            ->orderBy('id', 'desc')
+            ->paginate(self::INDEX_PRODUCTS_PER_PAGE);
+
         return view('index', ['title' => 'Последние товары', 'last_products' => $lastProducts]);
     }
 
@@ -43,7 +49,8 @@ class HomeController extends Controller
         $products = Product::query()
             ->where('title', 'LIKE', '%'.$request->q.'%')
             ->orWhere('description', 'LIKE', '%'.$request->q.'%')
-            ->paginate(6);
+            ->paginate(self::SEARCH_RESULTS_PER_PAGE);
+
         return view('search', ['title' => 'Поиск "'.$request->q.'"', 'products' => $products]);
     }
 }
