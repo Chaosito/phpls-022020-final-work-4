@@ -3,10 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Settings;
-use Hamcrest\Core\Set;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Route;
 
 class SettingsController extends Controller
 {
@@ -20,7 +17,11 @@ class SettingsController extends Controller
     {
         $availableKeys = ['phone_number', 'orders_mail_to'];
         foreach($availableKeys as $key) {
-            Settings::query()->where('key', $key)->update(['value' => $request->$key]);
+            $optValue = Settings::query()->where('key', $key)->first();
+            if ($optValue !== null) {
+                $optValue->update(['value' => $request->$key]);
+            }
+
         }
         return redirect()->route('site.settings');
     }
