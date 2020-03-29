@@ -60,7 +60,8 @@ class ProductController extends Controller
             return view('message', ['title' => 'Error', 'message' => 'Извините, данного продукта не существует!']);
         }
         return view('products.item', [
-            'title' => $productItem->title.' в разделе '.$productItem->category->title,
+            'product_title' => $productItem->title,
+            'category_title' => $productItem->category->title,
             'item' => $productItem
         ]);
     }

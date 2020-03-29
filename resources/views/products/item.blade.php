@@ -1,6 +1,6 @@
 @extends('layouts.gameshop')
 
-@section('title', $title)
+@section('title', $product_title.' в разделе '.$category_title)
 
 @section('content-main')
     <div class="content-main__container">
@@ -39,5 +39,3 @@
 
     <div class="content-footer__container"></div>
 @endsection
-
-@section('content-bottom')
