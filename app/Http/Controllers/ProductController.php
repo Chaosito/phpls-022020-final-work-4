@@ -42,15 +42,15 @@ class ProductController extends Controller
 
 //        $request->file('image')->move(self::UPLOAD_IMAGES_DIR, $newFileName);
 
-        $newProduct = new Product();
-        $newProduct->category_id = $request->category_id;
-        $newProduct->price = $request->price;
-        $newProduct->title = $request->title;
-        $newProduct->description = $request->description;
-        $newProduct->photo_path = self::UPLOAD_IMAGES_DIR.DIRECTORY_SEPARATOR.$newFileName;
-        $newProduct->save();
+        $createdId = Product::create([
+            'category_id' => $request->category_id,
+            'price' => $request->price * 2,
+            'title' => $request->title,
+            'description' => $request->description,
+            'photo_path' => self::UPLOAD_IMAGES_DIR.DIRECTORY_SEPARATOR.$newFileName,
+        ]);
 
-        return redirect()->route('product.item', ['id' => $newProduct->id]);
+        return redirect()->route('product.item', ['id' => $createdId]);
     }
 
     public function item($id)
