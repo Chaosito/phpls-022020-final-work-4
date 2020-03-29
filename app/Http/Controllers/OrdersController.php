@@ -28,7 +28,7 @@ class OrdersController extends Controller
     {
         $userName = (Auth::User() ? Auth::User()->name : '');
         $userMail = (Auth::User() ? Auth::User()->email : '');
-        $product = Product::query()->where('id', '=', $id)->first();
+        $product = Product::find($id);
 
         return view('orders.buy-window', ['id' => $id, 'product' => $product, 'user_name' => $userName, 'user_mail' => $userMail]);
     }
@@ -44,7 +44,10 @@ class OrdersController extends Controller
         $order->product_id = $request->product_id;
         $order->capacity = $request->capacity;
 
-        $product = Product::query()->where('id', '=', $request->product_id)->select(['price', 'title'])->first();
+        $product = Product::query()
+            ->where('id', '=', $request->product_id)
+            ->select(['price', 'title'])
+            ->first();
 
         $order->price = $product->price;
         $order->user_mail = $request->user_mail;
