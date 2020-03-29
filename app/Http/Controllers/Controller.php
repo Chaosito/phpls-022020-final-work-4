@@ -29,10 +29,10 @@ class Controller extends BaseController
             ->where('key','=','phone_number')
             ->first();
 
-        $lastNews = News::query()
-            ->orderBy('id', 'desc')
+        $lastNews = News::select(['id', 'title', 'image_path'])
+            ->orderByDesc('id')
             ->limit(self::SIDEBAR_NEWS_COUNT)
-            ->get(['id', 'title', 'image_path']);
+            ->get();
 
         // Нам плевать на производительность ;)
         $allProducts = Product::all();
